@@ -1,5 +1,5 @@
 import z from 'zod'
-import { baseResponseSchema } from '@/entities/common/common.schema'
+import { baseResponseSchema } from '@/common/common.schema'
 
 export const registerPayloadSchema = z.object({
   email: z.email().min(1),

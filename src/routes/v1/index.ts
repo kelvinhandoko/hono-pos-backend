@@ -1,5 +1,5 @@
 import { createRouter } from '@/lib/create-app'
-import auth from './auth'
+import tenantRouter from '@/routes/v1/tenant'
 
 export const v1Router = createRouter()
-  .route('/test', auth)
+  .route('/tenant', tenantRouter)

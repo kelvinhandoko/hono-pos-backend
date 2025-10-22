@@ -10,6 +10,16 @@ export function configureOpenApi(app: AppOpenAPI) {
       version: packageJSON.version,
       description: 'API documentation for the POS Backend application.',
     },
+    tags: [
+      {
+        name: 'Index',
+        description: 'Root API endpoints',
+      },
+      {
+        name: 'Tenant',
+        description: 'Tenant management endpoints for creating and managing multi-tenant organizations',
+      },
+    ],
   })
 
   app.get('/reference', Scalar({ sources: [{ url: '/docs', title: 'API Docs' }, {
