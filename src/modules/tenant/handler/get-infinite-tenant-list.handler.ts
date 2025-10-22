@@ -2,6 +2,7 @@ import type { AppRouteHandler } from '@/lib/type'
 
 import type { GetInfiniteTenantListRoute } from '@/routes/v1/tenant/get-infinite-tenant-list.routes'
 import { getInjection } from '@/di/container'
+import { infiniteTenantListResponseSchema } from '@/entities/tenant/get-tenant-list.entities'
 
 export const getInfiniteTenantListHandler: AppRouteHandler<GetInfiniteTenantListRoute> = async (c) => {
   const query = c.req.valid('query')
@@ -9,12 +10,12 @@ export const getInfiniteTenantListHandler: AppRouteHandler<GetInfiniteTenantList
 
   const getInfiniteTenantListController = getInjection('IGetInfiniteTenantListController')
   const result = await getInfiniteTenantListController({ ...query, userId })
-
-  return c.json({
+  const output = infiniteTenantListResponseSchema.safeParse({
     error: null,
     message: 'Tenant list retrieved successfully',
     success: true,
     data: result.data,
     meta: result.meta,
-  }, 200)
+  })
+  return c.json(output.data, 200)
 }

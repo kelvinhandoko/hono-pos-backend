@@ -19,6 +19,10 @@ export function configureOpenApi(app: AppOpenAPI) {
         name: 'Tenant',
         description: 'Tenant management endpoints for creating and managing multi-tenant organizations',
       },
+      {
+        name: 'Outlet',
+        description: 'Outlet management endpoints for creating and managing physical store locations under a tenant',
+      },
     ],
   })
 

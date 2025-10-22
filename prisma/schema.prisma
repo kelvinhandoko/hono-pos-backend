@@ -85,6 +85,7 @@ model Tenant {
   updatedAt DateTime     @default(now()) @updatedAt
   deletedAt DateTime?
   users     UserTenant[]
+  Outlet    Outlet[]
 
   @@map("tenants")
 }
@@ -100,4 +101,17 @@ model UserTenant {
   deletedAt DateTime?
 
   @@map("user_tenants")
+}
+
+model Outlet {
+  id        String    @id @default(cuid())
+  name      String
+  address   String
+  tenantId  String
+  tenant    Tenant    @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now()) @updatedAt
+  deletedAt DateTime?
+
+  @@map("outlets")
 }

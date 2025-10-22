@@ -2,6 +2,8 @@ import z from 'zod'
 
 export const baseResponseSchema = z.object({
   message: z.string(),
+  success: z.boolean(),
+  error: z.string().nullable(),
 })
 
 export const getQuerySchema = z.object({
