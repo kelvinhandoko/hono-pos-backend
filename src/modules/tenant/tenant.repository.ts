@@ -6,6 +6,7 @@ import type { DbTransactionClient } from '@/lib/db'
 import { BaseRepository } from '@/common/base.repository'
 import { db } from '@/lib/db'
 
+// jkabsdjasbd
 export class TenantRepository extends BaseRepository {
   async create(payload: CreateTenantPayload, tx?: DbTransactionClient) {
     try {
