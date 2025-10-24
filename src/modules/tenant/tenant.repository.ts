@@ -1,7 +1,11 @@
 import type { Prisma } from '@prisma/client'
 import type { CreateTenantPayload } from '@/entities/tenant/create-tenant.entities'
 import type { GetDetailTenantQuery } from '@/entities/tenant/get-detail-tenant.entities'
-import type { GetTenantListQuery, InfiniteTenantListQuery, PaginatedTenantListQuery } from '@/entities/tenant/get-tenant-list.entities'
+import type {
+  GetTenantListQuery,
+  InfiniteTenantListQuery,
+  PaginatedTenantListQuery,
+} from '@/entities/tenant/get-tenant-list.entities'
 import type { UpdateTenantPayload } from '@/entities/tenant/update-tenant.entities'
 import type { DbTransactionClient } from '@/lib/db'
 import { BaseRepository } from '@/common/base.repository'
@@ -19,8 +23,7 @@ export class TenantRepository extends BaseRepository {
         },
       })
       return updated
-    }
-    catch (error) {
+    } catch (error) {
       this._fail(error)
     }
   }
@@ -38,8 +41,7 @@ export class TenantRepository extends BaseRepository {
         },
       })
       return updated
-    }
-    catch (error) {
+    } catch (error) {
       this._fail(error)
     }
   }
@@ -50,7 +52,7 @@ export class TenantRepository extends BaseRepository {
       const whereClause: Prisma.TenantWhereInput = {
         users: { some: { userId } },
       }
-      const sortClause: Prisma.TenantOrderByWithRelationInput = { }
+      const sortClause: Prisma.TenantOrderByWithRelationInput = {}
       if (search) {
         whereClause.name = { contains: search, mode: 'insensitive' }
       }
@@ -60,8 +62,7 @@ export class TenantRepository extends BaseRepository {
       }
 
       return db.tenant.paginate({ where: whereClause, orderBy: sortClause })
-    }
-    catch (error) {
+    } catch (error) {
       this._fail(error)
     }
   }
@@ -73,8 +74,7 @@ export class TenantRepository extends BaseRepository {
         page: q.page,
       })
       return { data, meta }
-    }
-    catch (error) {
+    } catch (error) {
       this._fail(error)
     }
   }
@@ -83,8 +83,7 @@ export class TenantRepository extends BaseRepository {
     try {
       const [data, meta] = await this._getList(q).withCursor({ limit: q.limit, after: q.cursor })
       return { data, meta }
-    }
-    catch (error) {
+    } catch (error) {
       this._fail(error)
     }
   }
@@ -95,8 +94,7 @@ export class TenantRepository extends BaseRepository {
         where: { id: q.id },
       })
       return tenant
-    }
-    catch (error) {
+    } catch (error) {
       this._fail(error)
     }
   }

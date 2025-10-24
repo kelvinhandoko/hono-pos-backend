@@ -68,9 +68,14 @@ export function createTenantModule() {
     transactionManagerService: DI_SYMBOLS.ITransactionManagerService,
   })
 
-  tenantModule.bind(DI_SYMBOLS.IGetPaginatedTenantListController).toHigherOrderFunction(getPaginatedTenantListController, {
-    getPaginatedTenantListUseCase: DI_SYMBOLS.IGetPaginatedTenantListUseCase,
-  })
+  tenantModule
+    .bind(DI_SYMBOLS.IGetPaginatedTenantListController)
+    .toHigherOrderFunction(
+      getPaginatedTenantListController,
+      {
+        getPaginatedTenantListUseCase: DI_SYMBOLS.IGetPaginatedTenantListUseCase,
+      },
+    )
 
   tenantModule.bind(DI_SYMBOLS.IGetInfiniteTenantListController).toHigherOrderFunction(getInfiniteTenantListController, {
     getInfiniteTenantListUseCase: DI_SYMBOLS.IGetInfiniteTenantListUseCase,
