@@ -5,7 +5,8 @@ import * as HttpStatusCodes from 'stoker/http-status-codes'
 import { getInjection } from '@/di/container'
 
 export const getOutletDetailHandler: AppRouteHandler<GetOutletDetailRoute> = async (c) => {
-  const { id, tenantId } = c.req.valid('param')
+  const { id } = c.req.valid('param')
+  const tenantId = c.req.param('tenantId')!
 
   const getOutletDetailController = getInjection('IGetOutletDetailController')
   const outlet = await getOutletDetailController(id, tenantId)

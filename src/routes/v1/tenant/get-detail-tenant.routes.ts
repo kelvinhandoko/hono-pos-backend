@@ -4,15 +4,15 @@ import * as HttpStatusPhrases from 'stoker/http-status-phrases'
 import { jsonContent } from 'stoker/openapi/helpers'
 import { createMessageObjectSchema } from 'stoker/openapi/schemas'
 import z from 'zod'
-import { deleteOutletResponseSchema } from '@/entities/outlet/delete-outlet.entities'
+import { getDetailTenantResponseSchema } from '@/entities/tenant/get-detail-tenant.entities'
 
-const tags = ['Outlet']
+const tags = ['Tenant']
 
-export const deleteOutletRoute = createRoute({
-  path: '/:id',
-  method: 'delete',
-  description: 'Soft delete an outlet from the system.',
-  summary: 'Delete Outlet',
+export const getDetailTenantRoute = createRoute({
+  path: '/detail/:id',
+  method: 'get',
+  description: 'Get details of a specific tenant for the authenticated user.',
+  summary: 'Get Tenant Details',
   tags,
   request: {
     params: z.object({
@@ -21,18 +21,14 @@ export const deleteOutletRoute = createRoute({
   },
   responses: {
     [HttpStatusCodes.OK]: jsonContent(
-      deleteOutletResponseSchema,
-      'The outlet was deleted successfully',
+      getDetailTenantResponseSchema,
+      'Tenant details retrieved successfully',
     ),
     [HttpStatusCodes.UNAUTHORIZED]: jsonContent(
       createMessageObjectSchema(HttpStatusPhrases.UNAUTHORIZED),
       HttpStatusPhrases.UNAUTHORIZED,
     ),
-    [HttpStatusCodes.NOT_FOUND]: jsonContent(
-      createMessageObjectSchema('Outlet not found'),
-      'Outlet not found',
-    ),
   },
 })
 
-export type DeleteOutletRoute = typeof deleteOutletRoute
+export type GetDetailTenantRoute = typeof getDetailTenantRoute

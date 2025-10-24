@@ -4,7 +4,8 @@ import type { DeleteOutletRoute } from '@/routes/v1/outlet/delete-outlet.routes'
 import { getInjection } from '@/di/container'
 
 export const deleteOutletHandler: AppRouteHandler<DeleteOutletRoute> = async (c) => {
-  const { id, tenantId } = c.req.valid('param')
+  const { id } = c.req.valid('param')
+  const tenantId = c.req.param('tenantId')!
 
   const deleteOutletController = getInjection('IDeleteOutletController')
   await deleteOutletController({ id, tenantId })

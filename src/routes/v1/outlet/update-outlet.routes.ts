@@ -9,7 +9,7 @@ import { updateOutletPayloadSchema, updateOutletResponseSchema } from '@/entitie
 const tags = ['Outlet']
 
 export const updateOutletRoute = createRoute({
-  path: '/:tenantId/outlets/:id',
+  path: '/:id',
   method: 'put',
   description: 'Update an existing outlet in the system.',
   summary: 'Update Outlet',
@@ -17,7 +17,6 @@ export const updateOutletRoute = createRoute({
   request: {
     params: z.object({
       id: z.string().min(1).describe('The unique identifier of the outlet to update'),
-      tenantId: z.string().min(1).describe('The tenant ID'),
     }),
     body: jsonContentRequired(
       updateOutletPayloadSchema.omit({ id: true, tenantId: true }),
