@@ -6,12 +6,11 @@ import {
   PaginatedCategoryListResponse,
   PaginatedCategoryQuery,
 } from '@/entities/category/get-category.entities'
-import { GetDetailCategoryResponse } from '@/entities/category/get-detail-category.entities'
 import { UpdateCategoryPayload, UpdateCategoryResponse } from '@/entities/category/update-category.entities'
 
 import { db, DbTransactionClient } from '@/lib/db'
 
-export class CategoryRepository extends BaseRepository  {
+export class CategoryRepository extends BaseRepository {
   async create(payload: CreateCategoryPayload, tx?: DbTransactionClient): Promise<CreateCategoryResponse> {
     try {
       const invoker = tx ?? db
@@ -134,7 +133,7 @@ export class CategoryRepository extends BaseRepository  {
     try {
       const category = await db.category.findUnique({
         where: { id },
-        select:{id:true,name:true,createdBy:{select:{name:true}},updatedBy:{select:{name:true}}}
+        select: { id: true, name: true, createdBy: { select: { name: true } }, updatedBy: { select: { name: true } } },
       })
       if (!category) return null
 
@@ -144,6 +143,17 @@ export class CategoryRepository extends BaseRepository  {
         createdBy: category.createdBy.name,
         updatedBy: category?.updatedBy?.name,
       }
+    } catch (error) {
+      this._fail(error)
+    }
+  }
+
+  async getDetailByName(name: string, tenantId: string) {
+    try {
+      const category = await db.category.findFirst({
+        where: { name, tenantId },
+      })
+      return category
     } catch (error) {
       this._fail(error)
     }
