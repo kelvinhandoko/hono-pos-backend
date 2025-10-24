@@ -1,5 +1,6 @@
 import type { Prisma } from '@prisma/client'
 import type { CreateTenantPayload } from '@/entities/tenant/create-tenant.entities'
+import type { GetDetailTenantQuery } from '@/entities/tenant/get-detail-tenant.entities'
 import type { GetTenantListQuery, InfiniteTenantListQuery, PaginatedTenantListQuery } from '@/entities/tenant/get-tenant-list.entities'
 import type { UpdateTenantPayload } from '@/entities/tenant/update-tenant.entities'
 import type { DbTransactionClient } from '@/lib/db'
@@ -81,6 +82,18 @@ export class TenantRepository extends BaseRepository {
     try {
       const [data, meta] = await this._getList(q).withCursor({ limit: q.limit, after: q.cursor })
       return { data, meta }
+    }
+    catch (error) {
+      this._fail(error)
+    }
+  }
+
+  async getDetail(q: GetDetailTenantQuery) {
+    try {
+      const tenant = await db.tenant.findFirst({
+        where: { id: q.id },
+      })
+      return tenant
     }
     catch (error) {
       this._fail(error)

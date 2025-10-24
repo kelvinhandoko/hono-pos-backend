@@ -3,7 +3,6 @@ import * as HttpStatusCodes from 'stoker/http-status-codes'
 import * as HttpStatusPhrases from 'stoker/http-status-phrases'
 import { jsonContent, jsonContentRequired } from 'stoker/openapi/helpers'
 import { createErrorSchema, createMessageObjectSchema } from 'stoker/openapi/schemas'
-import z from 'zod'
 import { createOutletPayloadSchema, createOutletResponseSchema } from '@/entities/outlet/create-outlet.entities'
 
 const tags = ['Outlet']

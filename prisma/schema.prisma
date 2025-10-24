@@ -25,6 +25,8 @@ model User {
   accounts      Account[]
   deletedAt     DateTime?
   UserTenant    UserTenant[]
+  created_brand Brand[]      @relation("BrandCreatedBy")
+  updated_brand Brand[]      @relation("BrandUpdatedBy")
 
   @@unique([email])
   @@map("user")
@@ -86,6 +88,7 @@ model Tenant {
   deletedAt DateTime?
   users     UserTenant[]
   Outlet    Outlet[]
+  Brand     Brand[]
 
   @@map("tenants")
 }
@@ -114,4 +117,20 @@ model Outlet {
   deletedAt DateTime?
 
   @@map("outlets")
+}
+
+model Brand {
+  id          String    @id @default(cuid())
+  name        String    @unique
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @default(now()) @updatedAt
+  deletedAt   DateTime?
+  tenantId    String
+  tenant      Tenant    @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  createdById String
+  updatedById String?
+  createdBy   User      @relation("BrandCreatedBy", fields: [createdById], references: [id])
+  updatedBy   User?     @relation("BrandUpdatedBy", fields: [updatedById], references: [id])
+
+  @@map("brands")
 }

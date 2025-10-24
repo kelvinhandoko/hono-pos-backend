@@ -1,4 +1,5 @@
 import type { ICreateTenantController } from '@/modules/tenant/controller/create-tenant.controller'
+import type { IGetDetailTenantController } from '@/modules/tenant/controller/get-detail-tenant.controller'
 import type { IGetInfiniteTenantListController } from '@/modules/tenant/controller/get-infinite-tenant-list.controller'
 import type { IGetPaginatedTenantListController } from '@/modules/tenant/controller/get-paginated-tenant-list.controller'
 import type { IUpdateTenantController } from '@/modules/tenant/controller/update-tenant.controller'
@@ -6,6 +7,7 @@ import type { ICreateTenantOrchestrator } from '@/modules/tenant/orchestrator/cr
 import type { IUpdateTenantOrchestrator } from '@/modules/tenant/orchestrator/update-tenant.orchestrator'
 import type { TenantRepository } from '@/modules/tenant/tenant.repository'
 import type { ICreateTenantUseCase } from '@/modules/tenant/use-cases/create-tenant.use-case'
+import type { IGetDetailTenantUseCase } from '@/modules/tenant/use-cases/get-detail-tenant.use-case'
 import type { IGetInfiniteTenantListUseCase } from '@/modules/tenant/use-cases/get-infinite-tenant-list.use-case'
 import type { IGetPaginatedTenantListUseCase } from '@/modules/tenant/use-cases/get-paginated-tenant-list.use-case'
 import type { IUpdateTenantUseCase } from '@/modules/tenant/use-cases/update-tenant.use-case'
@@ -19,6 +21,7 @@ export const TENANT_DI_SYMBOLS = {
   IUpdateTenantUseCase: Symbol.for('IUpdateTenantUseCase'),
   IGetPaginatedTenantListUseCase: Symbol.for('IGetPaginatedTenantListUseCase'),
   IGetInfiniteTenantListUseCase: Symbol.for('IGetInfiniteTenantListUseCase'),
+  IGetDetailTenantUseCase: Symbol.for('IGetDetailTenantUseCase'),
 
   // orchestrators
   ICreateTenantOrchestrator: Symbol.for('ICreateTenantOrchestrator'),
@@ -29,6 +32,7 @@ export const TENANT_DI_SYMBOLS = {
   IUpdateTenantController: Symbol.for('IUpdateTenantController'),
   IGetPaginatedTenantListController: Symbol.for('IGetPaginatedTenantListController'),
   IGetInfiniteTenantListController: Symbol.for('IGetInfiniteTenantListController'),
+  IGetDetailTenantController: Symbol.for('IGetDetailTenantController'),
 } as const
 
 export interface TENANT_DI_RETURN_TYPES {
@@ -40,6 +44,7 @@ export interface TENANT_DI_RETURN_TYPES {
   IUpdateTenantUseCase: IUpdateTenantUseCase
   IGetPaginatedTenantListUseCase: IGetPaginatedTenantListUseCase
   IGetInfiniteTenantListUseCase: IGetInfiniteTenantListUseCase
+  IGetDetailTenantUseCase: IGetDetailTenantUseCase
 
   // orchestrators
   ICreateTenantOrchestrator: ICreateTenantOrchestrator
@@ -50,4 +55,5 @@ export interface TENANT_DI_RETURN_TYPES {
   IUpdateTenantController: IUpdateTenantController
   IGetPaginatedTenantListController: IGetPaginatedTenantListController
   IGetInfiniteTenantListController: IGetInfiniteTenantListController
+  IGetDetailTenantController: IGetDetailTenantController
 }
