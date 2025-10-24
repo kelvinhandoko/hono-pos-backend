@@ -9,7 +9,7 @@ import { getOutletDetailResponseSchema } from '@/entities/outlet/get-outlet-list
 const tags = ['Outlet']
 
 export const getOutletDetailRoute = createRoute({
-  path: '/:tenantId/outlets/:id',
+  path: '/:id',
   method: 'get',
   description: 'Get detailed information about a specific outlet.',
   summary: 'Get Outlet Detail',
@@ -17,7 +17,6 @@ export const getOutletDetailRoute = createRoute({
   request: {
     params: z.object({
       id: z.string().min(1).describe('The unique identifier of the outlet'),
-      tenantId: z.string().min(1).describe('The tenant ID'),
     }),
   },
   responses: {

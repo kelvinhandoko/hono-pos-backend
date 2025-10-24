@@ -5,7 +5,8 @@ import { getInjection } from '@/di/container'
 
 export const updateOutletHandler: AppRouteHandler<UpdateOutletRoute> = async (c) => {
   const payload = c.req.valid('json')
-  const { id, tenantId } = c.req.valid('param')
+  const { id } = c.req.valid('param')
+  const tenantId = c.req.param('tenantId')!
 
   const updateOutletController = getInjection('IUpdateOutletController')
   await updateOutletController({ ...payload, id, tenantId })

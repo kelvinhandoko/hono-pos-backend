@@ -5,7 +5,7 @@ import { getInjection } from '@/di/container'
 
 export const getPaginatedOutletListHandler: AppRouteHandler<GetPaginatedOutletListRoute> = async (c) => {
   const query = c.req.valid('query')
-  const { tenantId } = c.req.valid('param')
+  const tenantId = c.req.param('tenantId')!
 
   const getPaginatedOutletListController = getInjection('IGetPaginatedOutletListController')
   const result = await getPaginatedOutletListController({ ...query, tenantId })

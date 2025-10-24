@@ -9,7 +9,7 @@ import { deleteOutletResponseSchema } from '@/entities/outlet/delete-outlet.enti
 const tags = ['Outlet']
 
 export const deleteOutletRoute = createRoute({
-  path: '/:tenantId/outlets/:id',
+  path: '/:id',
   method: 'delete',
   description: 'Soft delete an outlet from the system.',
   summary: 'Delete Outlet',
@@ -17,7 +17,6 @@ export const deleteOutletRoute = createRoute({
   request: {
     params: z.object({
       id: z.string().min(1).describe('The unique identifier of the outlet to delete'),
-      tenantId: z.string().min(1).describe('The tenant ID'),
     }),
   },
   responses: {

@@ -5,7 +5,7 @@ import { getInjection } from '@/di/container'
 
 export const createOutletHandler: AppRouteHandler<CreateOutletRoute> = async (c) => {
   const payload = c.req.valid('json')
-  const { tenantId } = c.req.valid('param')
+  const tenantId = c.req.param('tenantId')!
 
   const createOutletController = getInjection('ICreateOutletController')
   await createOutletController({ ...payload, tenantId })

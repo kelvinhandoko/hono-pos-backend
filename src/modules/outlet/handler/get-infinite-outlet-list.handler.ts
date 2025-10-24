@@ -5,7 +5,7 @@ import { getInjection } from '@/di/container'
 
 export const getInfiniteOutletListHandler: AppRouteHandler<GetInfiniteOutletListRoute> = async (c) => {
   const query = c.req.valid('query')
-  const { tenantId } = c.req.valid('param')
+  const tenantId = c.req.param('tenantId')!
 
   const getInfiniteOutletListController = getInjection('IGetInfiniteOutletListController')
   const result = await getInfiniteOutletListController({ ...query, tenantId })
