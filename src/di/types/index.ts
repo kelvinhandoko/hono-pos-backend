@@ -6,12 +6,14 @@ import { OUTLET_DI_SYMBOLS } from '@/di/types/outlet'
 import { SERVICE_DI_SYMBOLS } from '@/di/types/service'
 import { TENANT_DI_SYMBOLS } from '@/di/types/tenant'
 import { USER_TENANT_DI_SYMBOLS } from '@/di/types/user-tenant'
+import { CATEGORY_DI_SYMBOLS } from '@/di/types/category'
 
 export const DI_SYMBOLS = {
   ...TENANT_DI_SYMBOLS,
   ...USER_TENANT_DI_SYMBOLS,
   ...OUTLET_DI_SYMBOLS,
   ...SERVICE_DI_SYMBOLS,
+  ...CATEGORY_DI_SYMBOLS,
 } as const
 
 export interface DI_RETURN_TYPES

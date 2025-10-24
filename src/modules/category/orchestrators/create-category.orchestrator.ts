@@ -1,4 +1,5 @@
 import { CreateCategoryPayload } from '@/entities/category/create-category.entities'
+import { DbTransactionClient } from '@/lib/db'
 import { ICreateCategoryUseCase } from '@/modules/category/use-cases/create-category.use-case'
 import { IGetCategoryDetailNameUseCase } from '@/modules/category/use-cases/get-category-detail-name.use-case'
 import { IGetDetailTenantUseCase } from '@/modules/tenant/use-cases/get-detail-tenant.use-case'
@@ -9,7 +10,7 @@ export const createCategoryOrchestrator =
     createCategoryUseCase: ICreateCategoryUseCase
     getCategoryDetail: IGetCategoryDetailNameUseCase
   }) =>
-  async (payload: CreateCategoryPayload) => {
+  async (payload: CreateCategoryPayload, tx?: DbTransactionClient) => {
     const { createCategoryUseCase, getCategoryDetail, getTenantDetail } = deps
     const isTenantExists = await getTenantDetail({
       id: payload.tenantId,
@@ -22,9 +23,11 @@ export const createCategoryOrchestrator =
     if (!categoryDetail) {
       throw new Error('Failed to get category detail after creation')
     }
-    const category = await createCategoryUseCase(payload)
+    const category = await createCategoryUseCase(payload, tx)
     if (!category) {
       throw new Error('Failed to create category')
     }
     return category
   }
+
+export type ICreateCategoryOrchestrator = ReturnType<typeof createCategoryOrchestrator>

@@ -21,9 +21,7 @@ export function createOutletModule() {
   const outletModule = createModule()
 
   // repo
-  outletModule
-    .bind(DI_SYMBOLS.IOutletRepository)
-    .toClass(OutletRepository)
+  outletModule.bind(DI_SYMBOLS.IOutletRepository).toClass(OutletRepository)
 
   // use-cases
   outletModule
@@ -51,23 +49,17 @@ export function createOutletModule() {
     .toHigherOrderFunction(getInfiniteOutletListUseCase, [DI_SYMBOLS.IOutletRepository])
 
   // orchestrators
-  outletModule
-    .bind(DI_SYMBOLS.ICreateOutletOrchestrator)
-    .toHigherOrderFunction(createOutletOrchestrator, {
-      createOutletUseCase: DI_SYMBOLS.ICreateOutletUseCase,
-    })
+  outletModule.bind(DI_SYMBOLS.ICreateOutletOrchestrator).toHigherOrderFunction(createOutletOrchestrator, {
+    createOutletUseCase: DI_SYMBOLS.ICreateOutletUseCase,
+  })
 
-  outletModule
-    .bind(DI_SYMBOLS.IUpdateOutletOrchestrator)
-    .toHigherOrderFunction(updateOutletOrchestrator, {
-      updateOutletUseCase: DI_SYMBOLS.IUpdateOutletUseCase,
-    })
+  outletModule.bind(DI_SYMBOLS.IUpdateOutletOrchestrator).toHigherOrderFunction(updateOutletOrchestrator, {
+    updateOutletUseCase: DI_SYMBOLS.IUpdateOutletUseCase,
+  })
 
-  outletModule
-    .bind(DI_SYMBOLS.IDeleteOutletOrchestrator)
-    .toHigherOrderFunction(deleteOutletOrchestrator, {
-      deleteOutletUseCase: DI_SYMBOLS.IDeleteOutletUseCase,
-    })
+  outletModule.bind(DI_SYMBOLS.IDeleteOutletOrchestrator).toHigherOrderFunction(deleteOutletOrchestrator, {
+    deleteOutletUseCase: DI_SYMBOLS.IDeleteOutletUseCase,
+  })
 
   // controllers
   outletModule.bind(DI_SYMBOLS.ICreateOutletController).toHigherOrderFunction(createOutletController, {
@@ -89,13 +81,17 @@ export function createOutletModule() {
     getOutletDetailUseCase: DI_SYMBOLS.IGetOutletDetailUseCase,
   })
 
-  outletModule.bind(DI_SYMBOLS.IGetPaginatedOutletListController).toHigherOrderFunction(getPaginatedOutletListController, {
-    getPaginatedOutletListUseCase: DI_SYMBOLS.IGetPaginatedOutletListUseCase,
-  })
+  outletModule
+    .bind(DI_SYMBOLS.IGetPaginatedOutletListController)
+    .toHigherOrderFunction(getPaginatedOutletListController, {
+      getPaginatedOutletListUseCase: DI_SYMBOLS.IGetPaginatedOutletListUseCase,
+    })
 
-  outletModule.bind(DI_SYMBOLS.IGetInfiniteOutletListController).toHigherOrderFunction(getInfiniteOutletListController, {
-    getInfiniteOutletListUseCase: DI_SYMBOLS.IGetInfiniteOutletListUseCase,
-  })
+  outletModule
+    .bind(DI_SYMBOLS.IGetInfiniteOutletListController)
+    .toHigherOrderFunction(getInfiniteOutletListController, {
+      getInfiniteOutletListUseCase: DI_SYMBOLS.IGetInfiniteOutletListUseCase,
+    })
 
   return outletModule
 }

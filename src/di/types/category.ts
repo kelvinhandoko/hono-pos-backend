@@ -1,5 +1,6 @@
-
 import { CategoryRepository } from '@/modules/category/category.repository'
+import { ICreateCategoryController } from '@/modules/category/controller/create-category.controller'
+import { ICreateCategoryOrchestrator } from '@/modules/category/orchestrators/create-category.orchestrator'
 import { ICreateCategoryUseCase } from '@/modules/category/use-cases/create-category.use-case'
 import { IGetInfiniteCategoryListUseCase } from '@/modules/category/use-cases/get-category-infinite.use-case'
 import { IGetPaginatedCategoryListUseCase } from '@/modules/category/use-cases/get-category.use-case'
@@ -38,11 +39,7 @@ export interface CATEGORY_DI_RETURN_TYPES {
 
   // orchestrators
   ICreateCategoryOrchestrator: ICreateCategoryOrchestrator
-  IUpdateCategoryOrchestrator: IUpdateCategoryOrchestrator
 
   // controller
   ICreateCategoryController: ICreateCategoryController
-  IUpdateCategoryController: IUpdateCategoryController
-  IGetPaginatedCategoryListController: IGetPaginatedCategoryListController
-  IGetInfiniteCategoryListController: IGetInfiniteCategoryListController
 }
