@@ -1,4 +1,5 @@
-import { ICategoryRepository } from '@/interfaces/category/category.repository.interface'
+
+import { CategoryRepository } from '@/modules/category/category.repository'
 import { ICreateCategoryUseCase } from '@/modules/category/use-cases/create-category.use-case'
 import { IGetInfiniteCategoryListUseCase } from '@/modules/category/use-cases/get-category-infinite.use-case'
 import { IGetPaginatedCategoryListUseCase } from '@/modules/category/use-cases/get-category.use-case'
@@ -27,7 +28,7 @@ export const CATEGORY_DI_SYMBOLS = {
 
 export interface CATEGORY_DI_RETURN_TYPES {
   // repo
-  ICategoryRepository: ICategoryRepository
+  ICategoryRepository: CategoryRepository
 
   // use-cases
   ICreateCategoryUseCase: ICreateCategoryUseCase

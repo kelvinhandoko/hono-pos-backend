@@ -1,16 +1,17 @@
 import { BaseRepository } from '@/common/base.repository'
 import { CreateCategoryPayload, CreateCategoryResponse } from '@/entities/category/create-category.entities'
 import {
-  PaginatedCategoryQuery,
-  PaginatedCategoryListResponse,
-  InfiniteCategoryQuery,
   InfiniteCategoryListResponse,
+  InfiniteCategoryQuery,
+  PaginatedCategoryListResponse,
+  PaginatedCategoryQuery,
 } from '@/entities/category/get-category.entities'
+import { GetDetailCategoryResponse } from '@/entities/category/get-detail-category.entities'
 import { UpdateCategoryPayload, UpdateCategoryResponse } from '@/entities/category/update-category.entities'
-import { ICategoryRepository } from '@/interfaces/category/category.repository.interface'
+
 import { db, DbTransactionClient } from '@/lib/db'
 
-export class CategoryRepository extends BaseRepository implements ICategoryRepository {
+export class CategoryRepository extends BaseRepository  {
   async create(payload: CreateCategoryPayload, tx?: DbTransactionClient): Promise<CreateCategoryResponse> {
     try {
       const invoker = tx ?? db
@@ -125,6 +126,24 @@ export class CategoryRepository extends BaseRepository implements ICategoryRepos
         },
       }
       return response
+    } catch (error) {
+      this._fail(error)
+    }
+  }
+  async getDetailCategory(id: string) {
+    try {
+      const category = await db.category.findUnique({
+        where: { id },
+        select:{id:true,name:true,createdBy:{select:{name:true}},updatedBy:{select:{name:true}}}
+      })
+      if (!category) return null
+
+      return {
+        id: category.id,
+        name: category.name,
+        createdBy: category.createdBy.name,
+        updatedBy: category?.updatedBy?.name,
+      }
     } catch (error) {
       this._fail(error)
     }
