@@ -58,27 +58,37 @@ export function createTenantModule() {
     })
 
   // controllers
-  tenantModule.bind(DI_SYMBOLS.ICreateTenantController).toHigherOrderFunction(createTenantController, {
-    createTenantOrchestrator: DI_SYMBOLS.ICreateTenantOrchestrator,
-    transactionManagerService: DI_SYMBOLS.ITransactionManagerService,
-  })
+  tenantModule
+    .bind(DI_SYMBOLS.ICreateTenantController)
+    .toHigherOrderFunction(createTenantController, {
+      createTenantOrchestrator: DI_SYMBOLS.ICreateTenantOrchestrator,
+      transactionManagerService: DI_SYMBOLS.ITransactionManagerService,
+    })
 
-  tenantModule.bind(DI_SYMBOLS.IUpdateTenantController).toHigherOrderFunction(updateTenantController, {
-    updateTenantOrchestrator: DI_SYMBOLS.IUpdateTenantOrchestrator,
-    transactionManagerService: DI_SYMBOLS.ITransactionManagerService,
-  })
+  tenantModule
+    .bind(DI_SYMBOLS.IUpdateTenantController)
+    .toHigherOrderFunction(updateTenantController, {
+      updateTenantOrchestrator: DI_SYMBOLS.IUpdateTenantOrchestrator,
+      transactionManagerService: DI_SYMBOLS.ITransactionManagerService,
+    })
 
-  tenantModule.bind(DI_SYMBOLS.IGetPaginatedTenantListController).toHigherOrderFunction(getPaginatedTenantListController, {
-    getPaginatedTenantListUseCase: DI_SYMBOLS.IGetPaginatedTenantListUseCase,
-  })
+  tenantModule
+    .bind(DI_SYMBOLS.IGetPaginatedTenantListController)
+    .toHigherOrderFunction(getPaginatedTenantListController, {
+      getPaginatedTenantListUseCase: DI_SYMBOLS.IGetPaginatedTenantListUseCase,
+    })
 
-  tenantModule.bind(DI_SYMBOLS.IGetInfiniteTenantListController).toHigherOrderFunction(getInfiniteTenantListController, {
-    getInfiniteTenantListUseCase: DI_SYMBOLS.IGetInfiniteTenantListUseCase,
-  })
+  tenantModule
+    .bind(DI_SYMBOLS.IGetInfiniteTenantListController)
+    .toHigherOrderFunction(getInfiniteTenantListController, {
+      getInfiniteTenantListUseCase: DI_SYMBOLS.IGetInfiniteTenantListUseCase,
+    })
 
-  tenantModule.bind(DI_SYMBOLS.IGetDetailTenantController).toHigherOrderFunction(GetDetailTenantController, {
-    getDetailTenantUseCase: DI_SYMBOLS.IGetDetailTenantUseCase,
-  })
+  tenantModule
+    .bind(DI_SYMBOLS.IGetDetailTenantController)
+    .toHigherOrderFunction(GetDetailTenantController, {
+      getDetailTenantUseCase: DI_SYMBOLS.IGetDetailTenantUseCase,
+    })
 
   return tenantModule
 }
