@@ -5,6 +5,7 @@ import { createServiceModule } from '@/di/module/service.module'
 import { createTenantModule } from '@/di/module/tenant.module'
 import { createUserTenantModule } from '@/di/module/user-tenant.module'
 import { DI_SYMBOLS } from '@/di/types'
+import { createCategoryModule } from '@/di/module/category.module'
 
 const ApplicationContainer = createContainer()
 
@@ -12,9 +13,8 @@ ApplicationContainer.load(Symbol.for('TenantModule'), createTenantModule())
 ApplicationContainer.load(Symbol.for('ServiceModule'), createServiceModule())
 ApplicationContainer.load(Symbol.for('UserTenantModule'), createUserTenantModule())
 ApplicationContainer.load(Symbol.for('OutletModule'), createOutletModule())
+ApplicationContainer.load(Symbol.for('CategoryModule'), createCategoryModule())
 
-export function getInjection<K extends keyof typeof DI_SYMBOLS>(
-  symbol: K,
-): DI_RETURN_TYPES[K] {
+export function getInjection<K extends keyof typeof DI_SYMBOLS>(symbol: K): DI_RETURN_TYPES[K] {
   return ApplicationContainer.get(DI_SYMBOLS[symbol])
 }

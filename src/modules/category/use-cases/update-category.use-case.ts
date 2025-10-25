@@ -1,12 +1,14 @@
 import { UpdateCategoryPayload } from '@/entities/category/update-category.entities'
+import { DbTransactionClient } from '@/lib/db'
 import { CategoryRepository } from '@/modules/category/category.repository'
 
-export const UpdateCategoryUseCase = (repo: CategoryRepository) => async (payload: UpdateCategoryPayload) => {
-  const data = await repo.update(payload)
-  if (!data) {
-    throw new Error('Failed to update category')
+export const UpdateCategoryUseCase =
+  (repo: CategoryRepository) => async (payload: UpdateCategoryPayload, tx?: DbTransactionClient) => {
+    const data = await repo.update(payload, tx)
+    if (!data) {
+      throw new Error('Failed to update category')
+    }
+    return data
   }
-  return data
-}
 
 export type IUpdateCategoryUseCase = ReturnType<typeof UpdateCategoryUseCase>

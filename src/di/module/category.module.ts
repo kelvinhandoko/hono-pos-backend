@@ -17,11 +17,11 @@ export function createCategoryModule() {
     .toHigherOrderFunction(CreateCategoryUseCase, [DI_SYMBOLS.ICategoryRepository])
 
   categoryModule
-    .bind(DI_SYMBOLS.IGetPaginatedCategoryListController)
+    .bind(DI_SYMBOLS.IGetPaginatedCategoryListUseCase)
     .toHigherOrderFunction(GetPaginatedCategoryUseCase, [DI_SYMBOLS.ICategoryRepository])
 
   categoryModule
-    .bind(DI_SYMBOLS.IGetInfiniteCategoryListController)
+    .bind(DI_SYMBOLS.IGetInfiniteOutletListUseCase)
     .toHigherOrderFunction(CreateCategoryUseCase, [DI_SYMBOLS.ICategoryRepository])
 
   categoryModule
@@ -31,6 +31,9 @@ export function createCategoryModule() {
   //orchestrator
   categoryModule.bind(DI_SYMBOLS.ICreateCategoryOrchestrator).toHigherOrderFunction(CreateCategoryUseCase, {
     createCategoryUseCase: DI_SYMBOLS.ICreateCategoryUseCase,
+  })
+  categoryModule.bind(DI_SYMBOLS.IUpdateCategoryOrchestrator).toHigherOrderFunction(UpdateCategoryUseCase, {
+    updateCategoryUseCase: DI_SYMBOLS.IUpdateCategoryUseCase,
   })
   //controller
   categoryModule

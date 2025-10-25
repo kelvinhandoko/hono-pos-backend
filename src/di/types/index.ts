@@ -6,7 +6,7 @@ import { OUTLET_DI_SYMBOLS } from '@/di/types/outlet'
 import { SERVICE_DI_SYMBOLS } from '@/di/types/service'
 import { TENANT_DI_SYMBOLS } from '@/di/types/tenant'
 import { USER_TENANT_DI_SYMBOLS } from '@/di/types/user-tenant'
-import { CATEGORY_DI_SYMBOLS } from '@/di/types/category'
+import { CATEGORY_DI_RETURN_TYPES, CATEGORY_DI_SYMBOLS } from '@/di/types/category'
 
 export const DI_SYMBOLS = {
   ...TENANT_DI_SYMBOLS,
@@ -20,4 +20,5 @@ export interface DI_RETURN_TYPES
   extends TENANT_DI_RETURN_TYPES,
     USER_TENANT_DI_RETURN_TYPES,
     OUTLET_DI_RETURN_TYPES,
+    CATEGORY_DI_RETURN_TYPES,
     SERVICE_DI_RETURN_TYPES {}
