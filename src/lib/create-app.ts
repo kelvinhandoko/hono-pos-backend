@@ -20,22 +20,20 @@ export function createApp() {
   const app = createRouter()
 
   app.use(logger())
-  app.use('v1/*', authenticationMiddleware)
 
   app.use(
-    '/api/auth/*',
+    '*',
     cors({
-      origin: env.CLIENT_URL,
+      origin: 'http://localhost:3001',
+      allowMethods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
       allowHeaders: ['Content-Type', 'Authorization'],
-      allowMethods: ['POST', 'GET', 'OPTIONS'],
-      exposeHeaders: ['Content-Length'],
-      maxAge: 600,
       credentials: true,
     }),
   )
   app.on(['POST', 'GET'], '/api/auth/*', (c) => {
     return auth.handler(c.req.raw)
   })
+  app.use('v1/*', authenticationMiddleware)
   app.onError(onError)
   app.notFound(notFound)
 

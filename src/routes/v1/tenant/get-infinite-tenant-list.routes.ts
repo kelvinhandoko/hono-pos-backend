@@ -3,7 +3,10 @@ import * as HttpStatusCodes from 'stoker/http-status-codes'
 import * as HttpStatusPhrases from 'stoker/http-status-phrases'
 import { jsonContent } from 'stoker/openapi/helpers'
 import { createErrorSchema, createMessageObjectSchema } from 'stoker/openapi/schemas'
-import { infiniteTenantListQuerySchema, infiniteTenantListResponseSchema } from '@/entities/tenant/get-tenant-list.entities'
+import {
+  infiniteTenantListQuerySchema,
+  infiniteTenantListResponseSchema,
+} from '@/entities/tenant/get-tenant-list.entities'
 
 const tags = ['Tenant']
 
