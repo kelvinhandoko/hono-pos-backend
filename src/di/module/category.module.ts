@@ -35,6 +35,7 @@ export function createCategoryModule() {
   categoryModule.bind(DI_SYMBOLS.IUpdateCategoryOrchestrator).toHigherOrderFunction(UpdateCategoryUseCase, {
     updateCategoryUseCase: DI_SYMBOLS.IUpdateCategoryUseCase,
   })
+
   //controller
   categoryModule
     .bind(DI_SYMBOLS.ICreateCategoryController)
