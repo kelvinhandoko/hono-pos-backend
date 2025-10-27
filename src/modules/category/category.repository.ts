@@ -6,7 +6,6 @@ import {
   PaginatedCategoryListResponse,
   PaginatedCategoryQuery,
 } from '@/entities/category/get-category.entities'
-import { GetDetailCategoryQuery } from '@/entities/category/get-detail-category.entities'
 import { UpdateCategoryPayload } from '@/entities/category/update-category.entities'
 
 import { db, DbTransactionClient } from '@/lib/db'

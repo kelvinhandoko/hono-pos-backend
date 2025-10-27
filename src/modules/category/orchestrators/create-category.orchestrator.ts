@@ -21,7 +21,7 @@ export const createCategoryOrchestrator =
 
     const categoryDetail = await getCategoryDetail({ name: payload.name, tenandId: payload.tenantId })
     if (!categoryDetail) {
-      throw new Error('Failed to get category detail after creation')
+      throw new Error('Category name already in use')
     }
     const category = await createCategoryUseCase(payload, tx)
     if (!category) {
