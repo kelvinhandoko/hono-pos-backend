@@ -1,5 +1,6 @@
 import { CategoryRepository } from '@/modules/category/category.repository'
 import { ICreateCategoryController } from '@/modules/category/controller/create-category.controller'
+import { IGetCategoryDetailController } from '@/modules/category/controller/get-category-detail.controller'
 import { IUpdateCategoryController } from '@/modules/category/controller/update-category.controller'
 import { ICreateCategoryOrchestrator } from '@/modules/category/orchestrators/create-category.orchestrator'
 import { IUpdateCategoryOrchestrator } from '@/modules/category/orchestrators/update-category.orchestrator'
@@ -27,6 +28,7 @@ export const CATEGORY_DI_SYMBOLS = {
   // controller
   ICreateCategoryController: Symbol.for('ICreateCategoryController'),
   IUpdateCategoryController: Symbol.for('IUpdateCategoryController'),
+  IGetCategoryDetailController: Symbol.for('IGetCategoryDetailController'),
 }
 
 export interface CATEGORY_DI_RETURN_TYPES {
@@ -47,4 +49,5 @@ export interface CATEGORY_DI_RETURN_TYPES {
   // controller
   ICreateCategoryController: ICreateCategoryController
   IUpdateCategoryController: IUpdateCategoryController
+  IGetCategoryDetailController: IGetCategoryDetailController
 }

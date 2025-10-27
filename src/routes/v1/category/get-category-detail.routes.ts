@@ -16,8 +16,8 @@ export const getCategoryDetailRoute = createRoute({
   tags,
   request: {
     params: z.object({
-      by: z.enum(['id', 'name']).describe('Search category by id or name'),
-      identifier: z.string().min(1).describe('The ID or name of the category'),
+      tenantId: z.string().min(1).describe('The ID of the tenant'),
+      categoryId: z.string().min(1).describe('The ID of the category'),
     }),
   },
   responses: {

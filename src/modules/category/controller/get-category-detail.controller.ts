@@ -2,9 +2,9 @@ import { GetDetailCategoryQuery } from '@/entities/category/get-detail-category.
 import { IGetCategoryDetailUseCase } from '@/modules/category/use-cases/get-category-detail.use-case'
 
 export function getCategoryDetailController(deps: { getCategoryDetailUseCase: IGetCategoryDetailUseCase }) {
-  return async (query: GetDetailCategoryQuery) => {
+  return async (id: string) => {
     const { getCategoryDetailUseCase } = deps
-    return await getCategoryDetailUseCase(query)
+    return await getCategoryDetailUseCase(id)
   }
 }
 
