@@ -28,3 +28,5 @@ export const createBrandOrchestrator =
     }
     return brand
   }
+
+export type ICreateBrandOrchestrator = ReturnType<typeof createBrandOrchestrator>
