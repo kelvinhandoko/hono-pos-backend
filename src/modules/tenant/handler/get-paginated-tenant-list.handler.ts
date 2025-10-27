@@ -7,14 +7,19 @@ export const getPaginatedTenantListHandler: AppRouteHandler<GetPaginatedTenantLi
   const query = c.req.valid('query')
   const userId = c.var.user!.id
 
+  console.log({ userId })
+
   const getPaginatedTenantListController = getInjection('IGetPaginatedTenantListController')
   const result = await getPaginatedTenantListController({ ...query, userId })
 
-  return c.json({
-    error: null,
-    message: 'Tenant list retrieved successfully',
-    success: true,
-    data: result.data,
-    meta: result.meta,
-  }, 200)
+  return c.json(
+    {
+      error: null,
+      message: 'Tenant list retrieved successfully',
+      success: true,
+      data: result.data,
+      meta: result.meta,
+    },
+    200,
+  )
 }

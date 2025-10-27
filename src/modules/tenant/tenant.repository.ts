@@ -49,10 +49,12 @@ export class TenantRepository extends BaseRepository {
   private _getList(q: GetTenantListQuery) {
     try {
       const { search, userId, sort } = q
+
       const whereClause: Prisma.TenantWhereInput = {
         users: { some: { userId } },
       }
       const sortClause: Prisma.TenantOrderByWithRelationInput = {}
+
       if (search) {
         whereClause.name = { contains: search, mode: 'insensitive' }
       }

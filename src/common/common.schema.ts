@@ -11,14 +11,26 @@ export const getQuerySchema = z.object({
 })
 
 export const paginatedQuerySchema = z.object({
-  page: z.number().min(1).optional().default(1).describe('The page number for pagination'),
-  limit: z.number().min(1).max(100).optional().default(10).describe('The number of items per page for pagination'),
-  takeAll: z.boolean().optional().default(false).describe('Whether to take all items without pagination'),
+  page: z.coerce.number().min(1).optional().default(1).describe('The page number for pagination'),
+  limit: z.coerce
+    .number()
+    .min(1)
+    .max(100)
+    .optional()
+    .default(10)
+    .describe('The number of items per page for pagination'),
+  takeAll: z.coerce.boolean().optional().default(false).describe('Whether to take all items without pagination'),
 })
 
 export const infiniteQuerySchema = z.object({
   cursor: z.string().optional().describe('The cursor for infinite scrolling pagination'),
-  limit: z.number().min(1).max(100).optional().default(10).describe('The number of items to fetch for infinite scrolling pagination'),
+  limit: z.coerce
+    .number()
+    .min(1)
+    .max(100)
+    .optional()
+    .default(10)
+    .describe('The number of items to fetch for infinite scrolling pagination'),
 })
 
 export const sortEnum = z.enum(['asc', 'desc']).describe('Sort order: ascending or descending')
