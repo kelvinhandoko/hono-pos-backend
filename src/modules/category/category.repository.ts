@@ -6,6 +6,7 @@ import {
   PaginatedCategoryListResponse,
   PaginatedCategoryQuery,
 } from '@/entities/category/get-category.entities'
+import { GetDetailCategoryQuery } from '@/entities/category/get-detail-category.entities'
 import { UpdateCategoryPayload } from '@/entities/category/update-category.entities'
 
 import { db, DbTransactionClient } from '@/lib/db'
@@ -19,7 +20,7 @@ export class CategoryRepository extends BaseRepository {
         data: {
           name: payload.name,
           tenantId: payload.tenantId,
-          createdById: payload.createdById,
+          createdById: payload.userId,
         },
       })
 
@@ -35,7 +36,7 @@ export class CategoryRepository extends BaseRepository {
       const updateData = await invoker.category.update({
         data: {
           name: payload.name,
-          updatedById: payload.createdById,
+          updatedById: payload.userId,
         },
         where: {
           id: payload.id,

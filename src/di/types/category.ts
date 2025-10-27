@@ -4,6 +4,7 @@ import { IUpdateCategoryController } from '@/modules/category/controller/update-
 import { ICreateCategoryOrchestrator } from '@/modules/category/orchestrators/create-category.orchestrator'
 import { IUpdateCategoryOrchestrator } from '@/modules/category/orchestrators/update-category.orchestrator'
 import { ICreateCategoryUseCase } from '@/modules/category/use-cases/create-category.use-case'
+import { IGetCategoryDetailUseCase } from '@/modules/category/use-cases/get-category-detail.use-case'
 import { IGetInfiniteCategoryListUseCase } from '@/modules/category/use-cases/get-category-infinite.use-case'
 import { IGetPaginatedCategoryListUseCase } from '@/modules/category/use-cases/get-category.use-case'
 import { IUpdateCategoryUseCase } from '@/modules/category/use-cases/update-category.use-case'
@@ -17,6 +18,7 @@ export const CATEGORY_DI_SYMBOLS = {
   IUpdateCategoryUseCase: Symbol.for('IUpdateCategoryUseCase'),
   IGetPaginatedCategoryListUseCase: Symbol.for('IGetPaginatedCategoryListUseCase'),
   IGetInfiniteCategoryListUseCase: Symbol.for('IGetInfiniteCategoryListUseCase'),
+  IGetCategoryDetailUseCase: Symbol.for('IGetCategoryDetailUseCase'),
 
   // orchestrators
   ICreateCategoryOrchestrator: Symbol.for('ICreateCategoryOrchestrator'),
@@ -36,6 +38,7 @@ export interface CATEGORY_DI_RETURN_TYPES {
   IUpdateCategoryUseCase: IUpdateCategoryUseCase
   IGetPaginatedCategoryListUseCase: IGetPaginatedCategoryListUseCase
   IGetInfiniteCategoryListUseCase: IGetInfiniteCategoryListUseCase
+  IGetCategoryDetailUseCase: IGetCategoryDetailUseCase
 
   // orchestrators
   ICreateCategoryOrchestrator: ICreateCategoryOrchestrator
