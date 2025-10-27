@@ -1,7 +1,9 @@
 import { createRouter } from '@/lib/create-app'
-import categoryHandler from '@/modules/category/handler'
-import { getCategoryDetailRoute } from '@/routes/v1/category/get-category-detail.routes'
+import { createCategoryHandler } from '@/modules/category/handler/create-category.handler'
+import { updateCategoryHandler } from '@/modules/category/handler/update-category.handler'
+import { createCategoryRoute } from '@/routes/v1/category/create-category.routes'
+import { updateCategoryRoute } from '@/routes/v1/category/update-category.routes'
 
-const categoryRouter = createRouter().openapi(getCategoryDetailRoute, categoryHandler.getDetail)
-
-export default categoryRouter
+export const categoryRouter = createRouter()
+  .openapi(createCategoryRoute, createCategoryHandler)
+  .openapi(updateCategoryRoute, updateCategoryHandler)

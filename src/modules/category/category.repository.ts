@@ -1,18 +1,17 @@
 import { BaseRepository } from '@/common/base.repository'
-import { CreateCategoryPayload, CreateCategoryResponse } from '@/entities/category/create-category.entities'
+import { CreateCategoryPayload } from '@/entities/category/create-category.entities'
 import {
   InfiniteCategoryListResponse,
   InfiniteCategoryQuery,
   PaginatedCategoryListResponse,
   PaginatedCategoryQuery,
 } from '@/entities/category/get-category.entities'
-import { GetDetailCategoryQuery, GetDetailCategoryResponse } from '@/entities/category/get-detail-category.entities'
-import { UpdateCategoryPayload, UpdateCategoryResponse } from '@/entities/category/update-category.entities'
+import { UpdateCategoryPayload } from '@/entities/category/update-category.entities'
 
 import { db, DbTransactionClient } from '@/lib/db'
 
 export class CategoryRepository extends BaseRepository {
-  async create(payload: CreateCategoryPayload, tx?: DbTransactionClient): Promise<CreateCategoryResponse> {
+  async create(payload: CreateCategoryPayload, tx?: DbTransactionClient) {
     try {
       const invoker = tx ?? db
 
@@ -23,45 +22,27 @@ export class CategoryRepository extends BaseRepository {
           createdById: payload.createdById,
         },
       })
-      const response = {
-        id: category.id,
-        name: category.name,
-        tenantId: category.tenantId,
-        createdById: category.createdById,
-        createdAt: category.createdAt.toISOString(),
-        updatedAt: category.updatedAt.toISOString(),
-        deletedAt: category.deletedAt ? category.deletedAt.toISOString() : null,
-        updatedById: category.updatedById,
-      }
-      return response
+
+      return category
     } catch (error) {
       this._fail(error)
     }
   }
-  async update(payload: UpdateCategoryPayload, tx?: DbTransactionClient): Promise<UpdateCategoryResponse> {
+  async update(payload: UpdateCategoryPayload, tx?: DbTransactionClient) {
     try {
       const invoker = tx ?? db
 
       const updateData = await invoker.category.update({
         data: {
           name: payload.name,
-          updatedById: payload.userId,
+          updatedById: payload.createdById,
         },
         where: {
           id: payload.id,
         },
       })
-      const response = {
-        id: updateData.id,
-        name: updateData.name,
-        tenantId: updateData.tenantId,
-        createdById: updateData.createdById,
-        updatedById: updateData.updatedById,
-        createdAt: updateData.createdAt.toISOString(),
-        updatedAt: updateData.updatedAt.toISOString(),
-        deletedAt: updateData.deletedAt ? updateData.deletedAt.toISOString() : null,
-      }
-      return response
+
+      return updateData
     } catch (error) {
       this._fail(error)
     }
@@ -132,10 +113,8 @@ export class CategoryRepository extends BaseRepository {
   }
   async getDetailCategory(q: GetDetailCategoryQuery) {
     try {
-      const { by, identifier } = q
-
-      const category = await db.category.findFirst({
-        where: { [by]: identifier },
+      const category = await db.category.findUnique({
+        where: { id },
         select: { id: true, name: true, createdBy: { select: { name: true } }, updatedBy: { select: { name: true } } },
       })
       if (!category) return null
@@ -146,6 +125,17 @@ export class CategoryRepository extends BaseRepository {
         createdBy: category.createdBy.name,
         updatedBy: category?.updatedBy?.name,
       }
+    } catch (error) {
+      this._fail(error)
+    }
+  }
+
+  async getDetailByName(name: string, tenantId: string) {
+    try {
+      const category = await db.category.findFirst({
+        where: { name, tenantId },
+      })
+      return category
     } catch (error) {
       this._fail(error)
     }

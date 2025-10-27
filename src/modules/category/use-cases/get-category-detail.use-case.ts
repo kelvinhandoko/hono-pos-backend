@@ -1,9 +1,12 @@
-import { GetDetailCategoryQuery } from '@/entities/category/get-detail-category.entities'
 import { CategoryRepository } from '@/modules/category/category.repository'
 
-export const getCategoryDetailUseCase = (repo: CategoryRepository) => async (query: GetDetailCategoryQuery) => {
-  const data = await repo.getDetailCategory(query)
+// export const getCategoryDetail
+export const GetCategoryDetailUseCase = (repo: CategoryRepository) => async (id: string) => {
+  const data = await repo.getDetailCategory(id)
+  if (!data) {
+    throw new Error('Failed to get category detail')
+  }
   return data
 }
 
-export type IGetCategoryDetailUseCase = ReturnType<typeof getCategoryDetailUseCase>
+export type IGetCategoryDetailUseCase = ReturnType<typeof GetCategoryDetailUseCase>

@@ -1,8 +1,7 @@
-import { createCategoryResponseSchema } from '@/entities/category/create-category.entities'
-import { createTenantPayloadSchema } from '@/entities/tenant/create-tenant.entities'
+import { createCategoryPayloadSchema, createCategoryResponseSchema } from '@/entities/category/create-category.entities'
 import z from 'zod'
 
-export const updateCategoryPayloadSchema = createTenantPayloadSchema.extend({
+export const updateCategoryPayloadSchema = createCategoryPayloadSchema.extend({
   id: z.string().min(1),
 })
 

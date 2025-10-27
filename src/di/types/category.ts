@@ -1,5 +1,8 @@
-import { IGetCategoryDetailController } from '@/modules/category/controller/get-category-detail.controller'
 import { CategoryRepository } from '@/modules/category/category.repository'
+import { ICreateCategoryController } from '@/modules/category/controller/create-category.controller'
+import { IUpdateCategoryController } from '@/modules/category/controller/update-category.controller'
+import { ICreateCategoryOrchestrator } from '@/modules/category/orchestrators/create-category.orchestrator'
+import { IUpdateCategoryOrchestrator } from '@/modules/category/orchestrators/update-category.orchestrator'
 import { ICreateCategoryUseCase } from '@/modules/category/use-cases/create-category.use-case'
 import { IGetCategoryDetailUseCase } from '@/modules/category/use-cases/get-category-detail.use-case'
 import { IGetInfiniteCategoryListUseCase } from '@/modules/category/use-cases/get-category-infinite.use-case'
@@ -24,9 +27,6 @@ export const CATEGORY_DI_SYMBOLS = {
   // controller
   ICreateCategoryController: Symbol.for('ICreateCategoryController'),
   IUpdateCategoryController: Symbol.for('IUpdateCategoryController'),
-  IGetPaginatedCategoryListController: Symbol.for('IGetPaginatedCategoryListController'),
-  IGetInfiniteCategoryListController: Symbol.for('IGetInfiniteCategoryListController'),
-  IGetCategoryDetailController: Symbol.for('IGetCategoryDetailController'),
 }
 
 export interface CATEGORY_DI_RETURN_TYPES {
@@ -47,7 +47,4 @@ export interface CATEGORY_DI_RETURN_TYPES {
   // controller
   ICreateCategoryController: ICreateCategoryController
   IUpdateCategoryController: IUpdateCategoryController
-  IGetPaginatedCategoryListController: IGetPaginatedCategoryListController
-  IGetInfiniteCategoryListController: IGetInfiniteCategoryListController
-  IGetCategoryDetailController: IGetCategoryDetailController
 }
