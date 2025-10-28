@@ -9,8 +9,12 @@ export function updateCategoryController(deps: {
   return async (payload: UpdateCategoryPayload) => {
     const { updateCategoryOrchestrator, transactionManagerService } = deps
 
-    return await transactionManagerService.startTransaction(async (tx) => await updateCategoryOrchestrator(payload, tx))
+    return await transactionManagerService.startTransaction(
+      async (tx) => await updateCategoryOrchestrator(payload, tx),
+    )
   }
 }
 
-export type IUpdateCategoryController = ReturnType<typeof updateCategoryController>
+export type IUpdateCategoryController = ReturnType<
+  typeof updateCategoryController
+>

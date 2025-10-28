@@ -9,8 +9,12 @@ export function createCategoryController(deps: {
   return async (payload: CreateCategoryPayload) => {
     const { createCategoryOrchestrator, transactionManagerService } = deps
 
-    return await transactionManagerService.startTransaction(async (tx) => await createCategoryOrchestrator(payload, tx))
+    return await transactionManagerService.startTransaction(
+      async (tx) => await createCategoryOrchestrator(payload, tx),
+    )
   }
 }
 
-export type ICreateCategoryController = ReturnType<typeof createCategoryController>
+export type ICreateCategoryController = ReturnType<
+  typeof createCategoryController
+>
