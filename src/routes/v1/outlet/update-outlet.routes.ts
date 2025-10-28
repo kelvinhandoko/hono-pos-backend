@@ -11,6 +11,7 @@ import {
   updateOutletPayloadSchema,
   updateOutletResponseSchema,
 } from '@/entities/schemas/outlet/update-outlet.entities'
+import { baseResponseSchema, errorResponseSchema } from '@/common/common.schema'
 
 const tags = ['Outlet']
 
@@ -46,7 +47,7 @@ export const updateOutletRoute = createRoute({
       HttpStatusPhrases.UNAUTHORIZED,
     ),
     [HttpStatusCodes.NOT_FOUND]: jsonContent(
-      createMessageObjectSchema('Outlet not found'),
+      errorResponseSchema,
       'Outlet not found',
     ),
   },

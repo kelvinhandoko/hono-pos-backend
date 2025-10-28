@@ -28,6 +28,10 @@ export const getPaginatedOutletListRoute = createRoute({
       createMessageObjectSchema(HttpStatusPhrases.UNAUTHORIZED),
       HttpStatusPhrases.UNAUTHORIZED,
     ),
+    [HttpStatusCodes.INTERNAL_SERVER_ERROR]: jsonContent(
+      createMessageObjectSchema(HttpStatusPhrases.INTERNAL_SERVER_ERROR),
+      HttpStatusPhrases.INTERNAL_SERVER_ERROR,
+    ),
   },
 })
 

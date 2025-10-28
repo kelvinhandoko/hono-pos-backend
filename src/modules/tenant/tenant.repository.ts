@@ -96,7 +96,7 @@ export class TenantRepository extends BaseRepository {
   async getDetail(q: GetDetailTenantQuery) {
     try {
       const tenant = await db.tenant.findFirst({
-        where: { id: q.id },
+        where: { id: q.id, users: { some: { userId: q.userId } } },
       })
       return tenant
     } catch (error) {

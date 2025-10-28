@@ -6,6 +6,11 @@ export const baseResponseSchema = z.object({
   error: z.string().nullable(),
 })
 
+export const errorResponseSchema = z.object({
+  message: z.string(),
+  success: z.boolean().default(false),
+})
+
 export const getQuerySchema = z.object({
   search: z
     .string()

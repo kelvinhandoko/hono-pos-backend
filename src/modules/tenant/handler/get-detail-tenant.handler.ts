@@ -8,11 +8,16 @@ export const getDetailTenantHandler: AppRouteHandler<
   GetDetailTenantRoute
 > = async (c) => {
   const { id } = c.req.valid('param')
-
+  const userId = c.var.user!.id
   const getDetailTenantController = getInjection('IGetDetailTenantController')
-  const output = getDetailTenantResponseSchema.safeParse(
-    await getDetailTenantController({ id }),
-  ).data
+  const tenant = await getDetailTenantController({ id, userId })
+
+  const output = getDetailTenantResponseSchema.parse({
+    message: 'Tenant details retrieved successfully',
+    success: true,
+    error: null,
+    data: tenant,
+  })
 
   return c.json(output, 200)
 }

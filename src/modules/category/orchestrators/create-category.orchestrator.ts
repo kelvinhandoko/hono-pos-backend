@@ -15,6 +15,7 @@ export const createCategoryOrchestrator =
     const { createCategoryUseCase, getCategoryDetail, getTenantDetail } = deps
     const isTenantExists = await getTenantDetail({
       id: payload.tenantId,
+      userId: payload.userId,
     })
     if (!isTenantExists) {
       throw new NotFoundError('Tenant does not exist')

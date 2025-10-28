@@ -16,6 +16,7 @@ export const updateCategoryOrchestrator =
 
     const isTenantExists = await getTenantDetail({
       id: payload.tenantId,
+      userId: payload.userId,
     })
 
     if (!isTenantExists) {

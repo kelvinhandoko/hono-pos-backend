@@ -1,3 +1,4 @@
+import { NotFoundError } from '@/entities/error/common'
 import { UpdateBrandPayload } from '@/entities/schemas/brand/update-brand.entities'
 import { DbTransactionClient } from '@/lib/db'
 import { IgetDetailBrandUseCase } from '@/modules/brand/use-cases/get-detail-brand.use-case'
@@ -16,14 +17,23 @@ export const updateBrandOrchestrator =
 
     const isTenantExists = await getTenant({
       id: payload.tenantId,
+      userId: payload.userId,
     })
+
     if (!isTenantExists) {
-      throw new Error('Tenant does not exist')
+      throw new NotFoundError('Tenant does not exist')
+    }
+
+    const brandDetail = await getBrand({
+      by: 'id',
+      identifier: payload.id,
+    })
+
+    if (!brandDetail) {
+      throw new NotFoundError('Brand does not exist')
     }
 
     const brand = await updateBrandUseCase(payload, tx)
-    if (!brand) {
-      throw new Error('Failed to update brand')
-    }
+
     return brand
   }
