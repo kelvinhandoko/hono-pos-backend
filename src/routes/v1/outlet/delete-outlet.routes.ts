@@ -4,7 +4,7 @@ import * as HttpStatusPhrases from 'stoker/http-status-phrases'
 import { jsonContent } from 'stoker/openapi/helpers'
 import { createMessageObjectSchema } from 'stoker/openapi/schemas'
 import z from 'zod'
-import { deleteOutletResponseSchema } from '@/entities/outlet/delete-outlet.entities'
+import { deleteOutletResponseSchema } from '@/entities/schemas/outlet/delete-outlet.entities'
 
 const tags = ['Outlet']
 
@@ -20,18 +20,12 @@ export const deleteOutletRoute = createRoute({
     }),
   },
   responses: {
-    [HttpStatusCodes.OK]: jsonContent(
-      deleteOutletResponseSchema,
-      'The outlet was deleted successfully',
-    ),
+    [HttpStatusCodes.OK]: jsonContent(deleteOutletResponseSchema, 'The outlet was deleted successfully'),
     [HttpStatusCodes.UNAUTHORIZED]: jsonContent(
       createMessageObjectSchema(HttpStatusPhrases.UNAUTHORIZED),
       HttpStatusPhrases.UNAUTHORIZED,
     ),
-    [HttpStatusCodes.NOT_FOUND]: jsonContent(
-      createMessageObjectSchema('Outlet not found'),
-      'Outlet not found',
-    ),
+    [HttpStatusCodes.NOT_FOUND]: jsonContent(createMessageObjectSchema('Outlet not found'), 'Outlet not found'),
   },
 })
 

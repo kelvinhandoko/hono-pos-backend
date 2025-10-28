@@ -1,4 +1,4 @@
-import { CreateBrandPayload } from '@/entities/brand/create-brand.entities'
+import { CreateBrandPayload } from '@/entities/schemas/brand/create-brand.entities'
 import { DbTransactionClient } from '@/lib/db'
 import { ICreateBrandUseCase } from '@/modules/brand/use-cases/create-brand.use-cases'
 import { IGetBrandUseCase } from '@/modules/brand/use-cases/get-brand.use-case'

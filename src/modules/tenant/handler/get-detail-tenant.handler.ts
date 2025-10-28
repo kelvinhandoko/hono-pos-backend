@@ -2,7 +2,7 @@ import type { AppRouteHandler } from '@/lib/type'
 
 import type { GetDetailTenantRoute } from '@/routes/v1/tenant/get-detail-tenant.routes'
 import { getInjection } from '@/di/container'
-import { getDetailTenantResponseSchema } from '@/entities/tenant/get-detail-tenant.entities'
+import { getDetailTenantResponseSchema } from '@/entities/schemas/tenant/get-detail-tenant.entities'
 
 export const getDetailTenantHandler: AppRouteHandler<GetDetailTenantRoute> = async (c) => {
   const { id } = c.req.valid('param')

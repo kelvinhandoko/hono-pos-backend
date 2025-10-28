@@ -1,4 +1,4 @@
-import { UpdateCategoryPayload } from '@/entities/category/update-category.entities'
+import { UpdateCategoryPayload } from '@/entities/schemas/category/update-category.entities'
 import { IUpdateCategoryOrchestrator } from '@/modules/category/orchestrators/update-category.orchestrator'
 import { TransactionManagerService } from '@/services/transaction-manager.service'
 

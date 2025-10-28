@@ -4,7 +4,7 @@ import * as HttpStatusPhrases from 'stoker/http-status-phrases'
 import { jsonContent } from 'stoker/openapi/helpers'
 import { createMessageObjectSchema } from 'stoker/openapi/schemas'
 import z from 'zod'
-import { getOutletDetailResponseSchema } from '@/entities/outlet/get-outlet-list.entities'
+import { getOutletDetailResponseSchema } from '@/entities/schemas/outlet/get-outlet-list.entities'
 
 const tags = ['Outlet']
 
@@ -20,18 +20,12 @@ export const getOutletDetailRoute = createRoute({
     }),
   },
   responses: {
-    [HttpStatusCodes.OK]: jsonContent(
-      getOutletDetailResponseSchema,
-      'Outlet details retrieved successfully',
-    ),
+    [HttpStatusCodes.OK]: jsonContent(getOutletDetailResponseSchema, 'Outlet details retrieved successfully'),
     [HttpStatusCodes.UNAUTHORIZED]: jsonContent(
       createMessageObjectSchema(HttpStatusPhrases.UNAUTHORIZED),
       HttpStatusPhrases.UNAUTHORIZED,
     ),
-    [HttpStatusCodes.NOT_FOUND]: jsonContent(
-      createMessageObjectSchema('Outlet not found'),
-      'Outlet not found',
-    ),
+    [HttpStatusCodes.NOT_FOUND]: jsonContent(createMessageObjectSchema('Outlet not found'), 'Outlet not found'),
   },
 })
 

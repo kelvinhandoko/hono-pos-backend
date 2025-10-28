@@ -1,4 +1,4 @@
-import type { InfiniteOutletListQuery } from '@/entities/outlet/get-outlet-list.entities'
+import type { InfiniteOutletListQuery } from '@/entities/schemas/outlet/get-outlet-list.entities'
 import type { OutletRepository } from '@/modules/outlet/outlet.repository'
 
 export function getInfiniteOutletListUseCase(repo: OutletRepository) {

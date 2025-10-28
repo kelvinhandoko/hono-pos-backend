@@ -1,4 +1,4 @@
-import type { UpdateTenantPayload } from '@/entities/tenant/update-tenant.entities'
+import type { UpdateTenantPayload } from '@/entities/schemas/tenant/update-tenant.entities'
 import type { DbTransactionClient } from '@/lib/db'
 import type { TenantRepository } from '@/modules/tenant/tenant.repository'
 

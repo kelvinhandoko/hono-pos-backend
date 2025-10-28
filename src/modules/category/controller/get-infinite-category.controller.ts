@@ -1,4 +1,4 @@
-import { InfiniteCategoryQuery } from '@/entities/category/get-category.entities'
+import { InfiniteCategoryQuery } from '@/entities/schemas/category/get-category.entities'
 import { IGetInfiniteCategoryListUseCase } from '@/modules/category/use-cases/get-category-infinite.use-case'
 
 export function getInfiniteCategoryController(deps: { getInfiniteCategoryUseCase: IGetInfiniteCategoryListUseCase }) {

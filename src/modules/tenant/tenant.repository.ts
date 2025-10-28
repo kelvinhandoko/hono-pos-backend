@@ -1,12 +1,12 @@
 import type { Prisma } from '@prisma/client'
-import type { CreateTenantPayload } from '@/entities/tenant/create-tenant.entities'
-import type { GetDetailTenantQuery } from '@/entities/tenant/get-detail-tenant.entities'
+import type { CreateTenantPayload } from '@/entities/schemas/tenant/create-tenant.entities'
+import type { GetDetailTenantQuery } from '@/entities/schemas/tenant/get-detail-tenant.entities'
 import type {
   GetTenantListQuery,
   InfiniteTenantListQuery,
   PaginatedTenantListQuery,
-} from '@/entities/tenant/get-tenant-list.entities'
-import type { UpdateTenantPayload } from '@/entities/tenant/update-tenant.entities'
+} from '@/entities/schemas/tenant/get-tenant-list.entities'
+import type { UpdateTenantPayload } from '@/entities/schemas/tenant/update-tenant.entities'
 import type { DbTransactionClient } from '@/lib/db'
 import { BaseRepository } from '@/common/base.repository'
 import { db } from '@/lib/db'

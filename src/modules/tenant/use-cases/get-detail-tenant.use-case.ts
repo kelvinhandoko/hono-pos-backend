@@ -1,4 +1,4 @@
-import type { GetDetailTenantQuery } from '@/entities/tenant/get-detail-tenant.entities'
+import type { GetDetailTenantQuery } from '@/entities/schemas/tenant/get-detail-tenant.entities'
 import type { TenantRepository } from '@/modules/tenant/tenant.repository'
 
 export function getDetailTenantUseCase(repo: TenantRepository) {

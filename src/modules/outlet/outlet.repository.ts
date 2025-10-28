@@ -1,8 +1,12 @@
 import type { Prisma } from '@prisma/client'
-import type { CreateOutletPayload } from '@/entities/outlet/create-outlet.entities'
-import type { DeleteOutletPayload } from '@/entities/outlet/delete-outlet.entities'
-import type { GetOutletListQuery, InfiniteOutletListQuery, PaginatedOutletListQuery } from '@/entities/outlet/get-outlet-list.entities'
-import type { UpdateOutletPayload } from '@/entities/outlet/update-outlet.entities'
+import type { CreateOutletPayload } from '@/entities/schemas/outlet/create-outlet.entities'
+import type { DeleteOutletPayload } from '@/entities/schemas/outlet/delete-outlet.entities'
+import type {
+  GetOutletListQuery,
+  InfiniteOutletListQuery,
+  PaginatedOutletListQuery,
+} from '@/entities/schemas/outlet/get-outlet-list.entities'
+import type { UpdateOutletPayload } from '@/entities/schemas/outlet/update-outlet.entities'
 import type { DbTransactionClient } from '@/lib/db'
 import { BaseRepository } from '@/common/base.repository'
 import { db } from '@/lib/db'
@@ -20,8 +24,7 @@ export class OutletRepository extends BaseRepository {
         },
       })
       return outlet
-    }
-    catch (error) {
+    } catch (error) {
       this._fail(error)
     }
   }
@@ -31,10 +34,8 @@ export class OutletRepository extends BaseRepository {
       const invoker = tx ?? db
 
       const updateData: Prisma.OutletUpdateInput = {}
-      if (payload.name !== undefined)
-        updateData.name = payload.name
-      if (payload.address !== undefined)
-        updateData.address = payload.address
+      if (payload.name !== undefined) updateData.name = payload.name
+      if (payload.address !== undefined) updateData.address = payload.address
 
       const updated = await invoker.outlet.update({
         data: updateData,
@@ -44,8 +45,7 @@ export class OutletRepository extends BaseRepository {
         },
       })
       return updated
-    }
-    catch (error) {
+    } catch (error) {
       this._fail(error)
     }
   }
@@ -64,8 +64,7 @@ export class OutletRepository extends BaseRepository {
         },
       })
       return deleted
-    }
-    catch (error) {
+    } catch (error) {
       this._fail(error)
     }
   }
@@ -80,8 +79,7 @@ export class OutletRepository extends BaseRepository {
         },
       })
       return outlet
-    }
-    catch (error) {
+    } catch (error) {
       this._fail(error)
     }
   }
@@ -106,8 +104,7 @@ export class OutletRepository extends BaseRepository {
       }
 
       return db.outlet.paginate({ where: whereClause, orderBy: sortClause })
-    }
-    catch (error) {
+    } catch (error) {
       this._fail(error)
     }
   }
@@ -119,8 +116,7 @@ export class OutletRepository extends BaseRepository {
         page: q.page,
       })
       return { data, meta }
-    }
-    catch (error) {
+    } catch (error) {
       this._fail(error)
     }
   }
@@ -129,8 +125,7 @@ export class OutletRepository extends BaseRepository {
     try {
       const [data, meta] = await this._getList(q).withCursor({ limit: q.limit, after: q.cursor })
       return { data, meta }
-    }
-    catch (error) {
+    } catch (error) {
       this._fail(error)
     }
   }

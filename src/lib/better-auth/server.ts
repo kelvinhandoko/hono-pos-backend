@@ -20,8 +20,8 @@ export const auth = betterAuth({
         input: false,
       },
       branchId: {
-        type: 'string',
         input: false,
+        type: 'string',
       },
     },
   },

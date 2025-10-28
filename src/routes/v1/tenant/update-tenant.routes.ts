@@ -4,7 +4,7 @@ import * as HttpStatusPhrases from 'stoker/http-status-phrases'
 import { jsonContent, jsonContentRequired } from 'stoker/openapi/helpers'
 import { createErrorSchema, createMessageObjectSchema } from 'stoker/openapi/schemas'
 import z from 'zod'
-import { updateTenantPayloadSchema, updateTenantResponseSchema } from '@/entities/tenant/update-tenant.entities'
+import { updateTenantPayloadSchema, updateTenantResponseSchema } from '@/entities/schemas/tenant/update-tenant.entities'
 
 const tags = ['Tenant']
 
@@ -18,16 +18,10 @@ export const updateTenantRoute = createRoute({
     params: z.object({
       id: z.string().min(1).describe('The unique identifier of the tenant to update'),
     }),
-    body: jsonContentRequired(
-      updateTenantPayloadSchema.omit({ id: true }),
-      'The tenant update payload',
-    ),
+    body: jsonContentRequired(updateTenantPayloadSchema.omit({ id: true }), 'The tenant update payload'),
   },
   responses: {
-    [HttpStatusCodes.OK]: jsonContent(
-      updateTenantResponseSchema,
-      'The tenant was updated successfully',
-    ),
+    [HttpStatusCodes.OK]: jsonContent(updateTenantResponseSchema, 'The tenant was updated successfully'),
     [HttpStatusCodes.UNPROCESSABLE_ENTITY]: jsonContent(
       createErrorSchema(updateTenantPayloadSchema),
       'The validation error(s)',
@@ -36,10 +30,7 @@ export const updateTenantRoute = createRoute({
       createMessageObjectSchema(HttpStatusPhrases.UNAUTHORIZED),
       HttpStatusPhrases.UNAUTHORIZED,
     ),
-    [HttpStatusCodes.NOT_FOUND]: jsonContent(
-      createMessageObjectSchema('Tenant not found'),
-      'Tenant not found',
-    ),
+    [HttpStatusCodes.NOT_FOUND]: jsonContent(createMessageObjectSchema('Tenant not found'), 'Tenant not found'),
   },
 })
 

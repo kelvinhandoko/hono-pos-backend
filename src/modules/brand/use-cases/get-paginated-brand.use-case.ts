@@ -1,4 +1,4 @@
-import { PaginatedBrandQuery } from '@/entities/brand/get-category.entities'
+import { PaginatedBrandQuery } from '@/entities/schemas/brand/get-category.entities'
 import { BrandRepository } from '@/modules/brand/brand.repository'
 
 export const getPaginatedBrandUseCase = (repo: BrandRepository) => async (payload: PaginatedBrandQuery) => {

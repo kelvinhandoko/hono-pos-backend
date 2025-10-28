@@ -1,4 +1,4 @@
-import { CreateCategoryPayload } from '@/entities/category/create-category.entities'
+import { CreateCategoryPayload } from '@/entities/schemas/category/create-category.entities'
 import { DbTransactionClient } from '@/lib/db'
 import { CategoryRepository } from '@/modules/category/category.repository'
 

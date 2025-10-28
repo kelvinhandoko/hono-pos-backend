@@ -1,4 +1,4 @@
-import { InfiniteBrandQuery } from '@/entities/brand/get-category.entities'
+import { InfiniteBrandQuery } from '@/entities/schemas/brand/get-category.entities'
 import { BrandRepository } from '@/modules/brand/brand.repository'
 
 export const getInfiniteBrandUseCase = (repo: BrandRepository) => async (payload: InfiniteBrandQuery) => {

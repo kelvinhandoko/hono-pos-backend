@@ -1,4 +1,4 @@
-import type { CreateUserTenantPayload } from '@/entities/userTenant/create-user-tenant.entities'
+import type { CreateUserTenantPayload } from '@/entities/schemas/userTenant/create-user-tenant.entities'
 import type { DbTransactionClient } from '@/lib/db'
 import { BaseRepository } from '@/common/base.repository'
 import { db } from '@/lib/db'
@@ -14,8 +14,7 @@ export class UserTenantRepository extends BaseRepository {
         },
       })
       return created
-    }
-    catch (error) {
+    } catch (error) {
       this._fail(error)
     }
   }

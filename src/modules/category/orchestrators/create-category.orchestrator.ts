@@ -1,4 +1,4 @@
-import { CreateCategoryPayload } from '@/entities/category/create-category.entities'
+import { CreateCategoryPayload } from '@/entities/schemas/category/create-category.entities'
 import { DbTransactionClient } from '@/lib/db'
 import { ICreateCategoryUseCase } from '@/modules/category/use-cases/create-category.use-case'
 import { IGetCategoryDetailNameUseCase } from '@/modules/category/use-cases/get-category-detail-name.use-case'

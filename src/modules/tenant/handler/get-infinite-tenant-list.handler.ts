@@ -2,7 +2,7 @@ import type { AppRouteHandler } from '@/lib/type'
 
 import type { GetInfiniteTenantListRoute } from '@/routes/v1/tenant/get-infinite-tenant-list.routes'
 import { getInjection } from '@/di/container'
-import { infiniteTenantListResponseSchema } from '@/entities/tenant/get-tenant-list.entities'
+import { infiniteTenantListResponseSchema } from '@/entities/schemas/tenant/get-tenant-list.entities'
 
 export const getInfiniteTenantListHandler: AppRouteHandler<GetInfiniteTenantListRoute> = async (c) => {
   const query = c.req.valid('query')

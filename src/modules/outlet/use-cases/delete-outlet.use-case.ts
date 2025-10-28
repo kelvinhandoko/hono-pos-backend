@@ -1,4 +1,4 @@
-import type { DeleteOutletPayload } from '@/entities/outlet/delete-outlet.entities'
+import type { DeleteOutletPayload } from '@/entities/schemas/outlet/delete-outlet.entities'
 import type { DbTransactionClient } from '@/lib/db'
 import type { OutletRepository } from '@/modules/outlet/outlet.repository'
 

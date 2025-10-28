@@ -6,7 +6,7 @@ import { createErrorSchema, createMessageObjectSchema } from 'stoker/openapi/sch
 import {
   infiniteTenantListQuerySchema,
   infiniteTenantListResponseSchema,
-} from '@/entities/tenant/get-tenant-list.entities'
+} from '@/entities/schemas/tenant/get-tenant-list.entities'
 
 const tags = ['Tenant']
 

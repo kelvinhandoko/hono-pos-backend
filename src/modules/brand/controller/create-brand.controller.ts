@@ -1,4 +1,4 @@
-import { CreateBrandPayload } from '@/entities/brand/create-brand.entities'
+import { CreateBrandPayload } from '@/entities/schemas/brand/create-brand.entities'
 import { ICreateBrandOrchestrator } from '@/modules/brand/orchestrators/create-brand.orchestrator'
 import { TransactionManagerService } from '@/services/transaction-manager.service'
 

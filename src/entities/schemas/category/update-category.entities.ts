@@ -1,4 +1,7 @@
-import { createCategoryPayloadSchema, createCategoryResponseSchema } from '@/entities/category/create-category.entities'
+import {
+  createCategoryPayloadSchema,
+  createCategoryResponseSchema,
+} from '@/entities/schemas/category/create-category.entities'
 import z from 'zod'
 
 export const updateCategoryPayloadSchema = createCategoryPayloadSchema.extend({

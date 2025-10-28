@@ -1,4 +1,4 @@
-import { createBrandPayloadSchema } from '@/entities/brand/create-brand.entities'
+import { createBrandPayloadSchema } from '@/entities/schemas/brand/create-brand.entities'
 import z from 'zod'
 
 export const updateBrandPayloadSchema = createBrandPayloadSchema.extend({

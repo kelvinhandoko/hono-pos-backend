@@ -4,7 +4,7 @@ import * as HttpStatusPhrases from 'stoker/http-status-phrases'
 import { jsonContent } from 'stoker/openapi/helpers'
 import { createMessageObjectSchema } from 'stoker/openapi/schemas'
 import z from 'zod'
-import { getDetailCategoryResponseSchema } from '@/entities/category/get-detail-category.entities'
+import { getDetailCategoryResponseSchema } from '@/entities/schemas/category/get-detail-category.entities'
 
 const tags = ['Category']
 
@@ -16,8 +16,7 @@ export const getCategoryDetailRoute = createRoute({
   tags,
   request: {
     params: z.object({
-      tenantId: z.string().min(1).describe('The ID of the tenant'),
-      categoryId: z.string().min(1).describe('The ID of the category'),
+      id: z.string().describe('The unique identifier of the category'),
     }),
   },
   responses: {

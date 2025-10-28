@@ -1,4 +1,4 @@
-import { CreateCategoryPayload } from '@/entities/category/create-category.entities'
+import { CreateCategoryPayload } from '@/entities/schemas/category/create-category.entities'
 import { ICreateCategoryOrchestrator } from '@/modules/category/orchestrators/create-category.orchestrator'
 import { TransactionManagerService } from '@/services/transaction-manager.service'
 

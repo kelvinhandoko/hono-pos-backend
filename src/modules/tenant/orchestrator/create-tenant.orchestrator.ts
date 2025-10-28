@@ -1,4 +1,4 @@
-import type { CreateTenantPayload } from '@/entities/tenant/create-tenant.entities'
+import type { CreateTenantPayload } from '@/entities/schemas/tenant/create-tenant.entities'
 import type { DbTransactionClient } from '@/lib/db'
 import type { ICreateTenantUseCase } from '@/modules/tenant/use-cases/create-tenant.use-case'
 import type { ICreateUserTenantUseCase } from '@/modules/userTenant/use-cases/create-user-tenant.use-case'

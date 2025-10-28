@@ -1,4 +1,4 @@
-import { PaginatedCategoryQuery } from '@/entities/category/get-category.entities'
+import { PaginatedCategoryQuery } from '@/entities/schemas/category/get-category.entities'
 import { IGetPaginatedCategoryListUseCase } from '@/modules/category/use-cases/get-category.use-case'
 
 export function getPaginateCategoryController(deps: { getPaginateCategoryUseCase: IGetPaginatedCategoryListUseCase }) {

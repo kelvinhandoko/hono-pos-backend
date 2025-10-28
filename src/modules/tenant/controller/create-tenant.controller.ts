@@ -1,4 +1,4 @@
-import type { CreateTenantPayload } from '@/entities/tenant/create-tenant.entities'
+import type { CreateTenantPayload } from '@/entities/schemas/tenant/create-tenant.entities'
 import type { ICreateTenantOrchestrator } from '@/modules/tenant/orchestrator/create-tenant.orchestrator'
 import type { TransactionManagerService } from '@/services/transaction-manager.service'
 
@@ -8,9 +8,7 @@ export function createTenantController(deps: {
 }) {
   return async (payload: CreateTenantPayload & { userId: string }) => {
     const { createTenantOrchestrator, transactionManagerService } = deps
-    return await transactionManagerService.startTransaction(
-      async tx => await createTenantOrchestrator(payload, tx),
-    )
+    return await transactionManagerService.startTransaction(async (tx) => await createTenantOrchestrator(payload, tx))
   }
 }
 

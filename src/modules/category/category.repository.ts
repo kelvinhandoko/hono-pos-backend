@@ -1,12 +1,12 @@
 import { BaseRepository } from '@/common/base.repository'
-import { CreateCategoryPayload } from '@/entities/category/create-category.entities'
+import { CreateCategoryPayload } from '@/entities/schemas/category/create-category.entities'
 import {
   InfiniteCategoryListResponse,
   InfiniteCategoryQuery,
   PaginatedCategoryListResponse,
   PaginatedCategoryQuery,
-} from '@/entities/category/get-category.entities'
-import { UpdateCategoryPayload } from '@/entities/category/update-category.entities'
+} from '@/entities/schemas/category/get-category.entities'
+import { UpdateCategoryPayload } from '@/entities/schemas/category/update-category.entities'
 
 import { db, DbTransactionClient } from '@/lib/db'
 

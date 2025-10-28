@@ -1,4 +1,4 @@
-import { UpdateBrandPayload } from '@/entities/brand/update-brand.entities'
+import { UpdateBrandPayload } from '@/entities/schemas/brand/update-brand.entities'
 import { DbTransactionClient } from '@/lib/db'
 import { BrandRepository } from '@/modules/brand/brand.repository'
 

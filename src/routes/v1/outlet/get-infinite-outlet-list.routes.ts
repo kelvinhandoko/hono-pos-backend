@@ -3,7 +3,10 @@ import * as HttpStatusCodes from 'stoker/http-status-codes'
 import * as HttpStatusPhrases from 'stoker/http-status-phrases'
 import { jsonContent } from 'stoker/openapi/helpers'
 import { createMessageObjectSchema } from 'stoker/openapi/schemas'
-import { infiniteOutletListQuerySchema, infiniteOutletListResponseSchema } from '@/entities/outlet/get-outlet-list.entities'
+import {
+  infiniteOutletListQuerySchema,
+  infiniteOutletListResponseSchema,
+} from '@/entities/schemas/outlet/get-outlet-list.entities'
 
 const tags = ['Outlet']
 

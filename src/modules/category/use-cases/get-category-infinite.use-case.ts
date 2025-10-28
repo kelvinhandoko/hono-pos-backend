@@ -1,4 +1,4 @@
-import { InfiniteCategoryQuery } from '@/entities/category/get-category.entities'
+import { InfiniteCategoryQuery } from '@/entities/schemas/category/get-category.entities'
 import { CategoryRepository } from '@/modules/category/category.repository'
 
 export const GetInfiniteCategoryUseCase = (repo: CategoryRepository) => async (query: InfiniteCategoryQuery) => {

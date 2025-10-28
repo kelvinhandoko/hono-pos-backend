@@ -1,4 +1,4 @@
-import type { CreateOutletPayload } from '@/entities/outlet/create-outlet.entities'
+import type { CreateOutletPayload } from '@/entities/schemas/outlet/create-outlet.entities'
 import type { DbTransactionClient } from '@/lib/db'
 import type { ICreateOutletUseCase } from '@/modules/outlet/use-cases/create-outlet.use-case'
 

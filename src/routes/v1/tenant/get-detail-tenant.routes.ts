@@ -4,7 +4,7 @@ import * as HttpStatusPhrases from 'stoker/http-status-phrases'
 import { jsonContent } from 'stoker/openapi/helpers'
 import { createMessageObjectSchema } from 'stoker/openapi/schemas'
 import z from 'zod'
-import { getDetailTenantResponseSchema } from '@/entities/tenant/get-detail-tenant.entities'
+import { getDetailTenantResponseSchema } from '@/entities/schemas/tenant/get-detail-tenant.entities'
 
 const tags = ['Tenant']
 
@@ -20,10 +20,7 @@ export const getDetailTenantRoute = createRoute({
     }),
   },
   responses: {
-    [HttpStatusCodes.OK]: jsonContent(
-      getDetailTenantResponseSchema,
-      'Tenant details retrieved successfully',
-    ),
+    [HttpStatusCodes.OK]: jsonContent(getDetailTenantResponseSchema, 'Tenant details retrieved successfully'),
     [HttpStatusCodes.UNAUTHORIZED]: jsonContent(
       createMessageObjectSchema(HttpStatusPhrases.UNAUTHORIZED),
       HttpStatusPhrases.UNAUTHORIZED,

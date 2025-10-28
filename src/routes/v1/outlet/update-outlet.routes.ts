@@ -4,7 +4,7 @@ import * as HttpStatusPhrases from 'stoker/http-status-phrases'
 import { jsonContent, jsonContentRequired } from 'stoker/openapi/helpers'
 import { createErrorSchema, createMessageObjectSchema } from 'stoker/openapi/schemas'
 import z from 'zod'
-import { updateOutletPayloadSchema, updateOutletResponseSchema } from '@/entities/outlet/update-outlet.entities'
+import { updateOutletPayloadSchema, updateOutletResponseSchema } from '@/entities/schemas/outlet/update-outlet.entities'
 
 const tags = ['Outlet']
 
@@ -24,10 +24,7 @@ export const updateOutletRoute = createRoute({
     ),
   },
   responses: {
-    [HttpStatusCodes.OK]: jsonContent(
-      updateOutletResponseSchema,
-      'The outlet was updated successfully',
-    ),
+    [HttpStatusCodes.OK]: jsonContent(updateOutletResponseSchema, 'The outlet was updated successfully'),
     [HttpStatusCodes.UNPROCESSABLE_ENTITY]: jsonContent(
       createErrorSchema(updateOutletPayloadSchema),
       'The validation error(s)',
@@ -36,10 +33,7 @@ export const updateOutletRoute = createRoute({
       createMessageObjectSchema(HttpStatusPhrases.UNAUTHORIZED),
       HttpStatusPhrases.UNAUTHORIZED,
     ),
-    [HttpStatusCodes.NOT_FOUND]: jsonContent(
-      createMessageObjectSchema('Outlet not found'),
-      'Outlet not found',
-    ),
+    [HttpStatusCodes.NOT_FOUND]: jsonContent(createMessageObjectSchema('Outlet not found'), 'Outlet not found'),
   },
 })
 
