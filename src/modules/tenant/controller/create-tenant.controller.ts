@@ -8,7 +8,9 @@ export function createTenantController(deps: {
 }) {
   return async (payload: CreateTenantPayload & { userId: string }) => {
     const { createTenantOrchestrator, transactionManagerService } = deps
-    return await transactionManagerService.startTransaction(async (tx) => await createTenantOrchestrator(payload, tx))
+    return await transactionManagerService.startTransaction(
+      async (tx) => await createTenantOrchestrator(payload, tx),
+    )
   }
 }
 

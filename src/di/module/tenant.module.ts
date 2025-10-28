@@ -18,9 +18,7 @@ export function createTenantModule() {
   const tenantModule = createModule()
 
   // repo
-  tenantModule
-    .bind(DI_SYMBOLS.ITenantRepository)
-    .toClass(TenantRepository)
+  tenantModule.bind(DI_SYMBOLS.ITenantRepository).toClass(TenantRepository)
 
   // use-cases
   tenantModule
@@ -33,15 +31,21 @@ export function createTenantModule() {
 
   tenantModule
     .bind(DI_SYMBOLS.IGetPaginatedTenantListUseCase)
-    .toHigherOrderFunction(getPaginatedTenantListUseCase, [DI_SYMBOLS.ITenantRepository])
+    .toHigherOrderFunction(getPaginatedTenantListUseCase, [
+      DI_SYMBOLS.ITenantRepository,
+    ])
 
   tenantModule
     .bind(DI_SYMBOLS.IGetInfiniteTenantListUseCase)
-    .toHigherOrderFunction(getInfiniteTenantListUseCase, [DI_SYMBOLS.ITenantRepository])
+    .toHigherOrderFunction(getInfiniteTenantListUseCase, [
+      DI_SYMBOLS.ITenantRepository,
+    ])
 
   tenantModule
     .bind(DI_SYMBOLS.IGetDetailTenantUseCase)
-    .toHigherOrderFunction(getDetailTenantUseCase, [DI_SYMBOLS.ITenantRepository])
+    .toHigherOrderFunction(getDetailTenantUseCase, [
+      DI_SYMBOLS.ITenantRepository,
+    ])
 
   // orchestrators
   tenantModule

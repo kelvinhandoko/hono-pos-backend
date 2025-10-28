@@ -19,7 +19,10 @@ export const createCategoryOrchestrator =
       throw new Error('Tenant does not exist')
     }
 
-    const categoryDetail = await getCategoryDetail({ name: payload.name, tenandId: payload.tenantId })
+    const categoryDetail = await getCategoryDetail({
+      name: payload.name,
+      tenandId: payload.tenantId,
+    })
     if (!categoryDetail) {
       throw new Error('Category name already in use')
     }
@@ -30,4 +33,6 @@ export const createCategoryOrchestrator =
     return category
   }
 
-export type ICreateCategoryOrchestrator = ReturnType<typeof createCategoryOrchestrator>
+export type ICreateCategoryOrchestrator = ReturnType<
+  typeof createCategoryOrchestrator
+>

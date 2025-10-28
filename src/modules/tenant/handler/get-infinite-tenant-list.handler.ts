@@ -4,11 +4,15 @@ import type { GetInfiniteTenantListRoute } from '@/routes/v1/tenant/get-infinite
 import { getInjection } from '@/di/container'
 import { infiniteTenantListResponseSchema } from '@/entities/schemas/tenant/get-tenant-list.entities'
 
-export const getInfiniteTenantListHandler: AppRouteHandler<GetInfiniteTenantListRoute> = async (c) => {
+export const getInfiniteTenantListHandler: AppRouteHandler<
+  GetInfiniteTenantListRoute
+> = async (c) => {
   const query = c.req.valid('query')
   const userId = c.var.user!.id
 
-  const getInfiniteTenantListController = getInjection('IGetInfiniteTenantListController')
+  const getInfiniteTenantListController = getInjection(
+    'IGetInfiniteTenantListController',
+  )
   const result = await getInfiniteTenantListController({ ...query, userId })
   const output = infiniteTenantListResponseSchema.safeParse({
     error: null,

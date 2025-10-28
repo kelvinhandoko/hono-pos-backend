@@ -11,23 +11,33 @@ import {
 import { jsonContent } from 'stoker/openapi/helpers'
 import * as HttpStatusCodes from 'stoker/http-status-codes'
 import * as HttpStatusPhrases from 'stoker/http-status-phrases'
-import { createErrorSchema, createMessageObjectSchema } from 'stoker/openapi/schemas'
+import {
+  createErrorSchema,
+  createMessageObjectSchema,
+} from 'stoker/openapi/schemas'
 
 export const updateCategoryRoute = createRoute({
   path: '/:id',
   method: 'put',
-  description: 'Update an existing category in the system for a specific tenant.',
+  description:
+    'Update an existing category in the system for a specific tenant.',
   summary: 'Update Category',
   tags: ['Category'],
   // Further route definitions would go here
   request: {
     // Define request body and parameters here
-    body: jsonContentRequired(updateCategoryPayloadSchema.pick({ name: true }), 'The category update payload'),
+    body: jsonContentRequired(
+      updateCategoryPayloadSchema.pick({ name: true }),
+      'The category update payload',
+    ),
     params: updateCategoryPayloadSchema.pick({ id: true }),
   },
   responses: {
     // Define responses here
-    [HttpStatusCodes.OK]: jsonContent(updateCategoryResponseSchema, 'The updated category details'),
+    [HttpStatusCodes.OK]: jsonContent(
+      updateCategoryResponseSchema,
+      'The updated category details',
+    ),
     [HttpStatusCodes.UNPROCESSABLE_ENTITY]: jsonContent(
       createErrorSchema(updateCategoryPayloadSchema),
       'The validation error(s)',

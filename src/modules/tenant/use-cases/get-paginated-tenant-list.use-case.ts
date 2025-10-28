@@ -2,7 +2,10 @@ import type { PaginatedTenantListQuery } from '@/entities/schemas/tenant/get-ten
 import type { TenantRepository } from '@/modules/tenant/tenant.repository'
 
 export function getPaginatedTenantListUseCase(repo: TenantRepository) {
-  return async (query: PaginatedTenantListQuery) => await repo.getPaginatedList(query)
+  return async (query: PaginatedTenantListQuery) =>
+    await repo.getPaginatedList(query)
 }
 
-export type IGetPaginatedTenantListUseCase = ReturnType<typeof getPaginatedTenantListUseCase>
+export type IGetPaginatedTenantListUseCase = ReturnType<
+  typeof getPaginatedTenantListUseCase
+>

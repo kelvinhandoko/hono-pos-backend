@@ -8,9 +8,12 @@ export async function authenticationMiddleware(c: Context, next: Next) {
   if (!session) {
     c.set('user', null)
     c.set('session', null)
-    return c.json({
-      message: HttpStatusPhrases.UNAUTHORIZED,
-    }, HttpStatusCodes.UNAUTHORIZED)
+    return c.json(
+      {
+        message: HttpStatusPhrases.UNAUTHORIZED,
+      },
+      HttpStatusCodes.UNAUTHORIZED,
+    )
   }
   c.set('user', session.user)
   c.set('session', session.session)

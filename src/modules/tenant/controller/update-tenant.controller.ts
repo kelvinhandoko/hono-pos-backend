@@ -8,7 +8,9 @@ export function updateTenantController(deps: {
 }) {
   return async (payload: UpdateTenantPayload) => {
     const { updateTenantOrchestrator, transactionManagerService } = deps
-    return await transactionManagerService.startTransaction(async (tx) => await updateTenantOrchestrator(payload, tx))
+    return await transactionManagerService.startTransaction(
+      async (tx) => await updateTenantOrchestrator(payload, tx),
+    )
   }
 }
 

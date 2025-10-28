@@ -25,11 +25,15 @@ export function createBrandModule() {
 
   brandModule
     .bind(DI_SYMBOLS.IGetPaginatedBrandListUseCase)
-    .toHigherOrderFunction(getPaginatedBrandUseCase, [DI_SYMBOLS.IBrandRepository])
+    .toHigherOrderFunction(getPaginatedBrandUseCase, [
+      DI_SYMBOLS.IBrandRepository,
+    ])
 
   brandModule
     .bind(DI_SYMBOLS.IGetInfiniteBrandListUseCase)
-    .toHigherOrderFunction(getInfiniteBrandUseCase, [DI_SYMBOLS.IBrandRepository])
+    .toHigherOrderFunction(getInfiniteBrandUseCase, [
+      DI_SYMBOLS.IBrandRepository,
+    ])
 
   brandModule
     .bind(DI_SYMBOLS.IGetBrandDetailUseCase)

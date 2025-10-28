@@ -1,6 +1,10 @@
 import { BaseRepository } from '@/common/base.repository'
 import { CreateBrandPayload } from '@/entities/schemas/brand/create-brand.entities'
-import { getBrandQuery, InfiniteBrandQuery, PaginatedBrandQuery } from '@/entities/schemas/brand/get-category.entities'
+import {
+  getBrandQuery,
+  InfiniteBrandQuery,
+  PaginatedBrandQuery,
+} from '@/entities/schemas/brand/get-category.entities'
 import { UpdateBrandPayload } from '@/entities/schemas/brand/update-brand.entities'
 import { db, DbTransactionClient } from '@/lib/db'
 import { Prisma } from '@prisma/client'

@@ -2,7 +2,9 @@ import { getInjection } from '@/di/container'
 import { AppRouteHandler } from '@/lib/type'
 import { UpdateCategoryRoute } from '@/routes/v1/category/update-category.routes'
 
-export const updateCategoryHandler: AppRouteHandler<UpdateCategoryRoute> = async (c) => {
+export const updateCategoryHandler: AppRouteHandler<
+  UpdateCategoryRoute
+> = async (c) => {
   const payload = c.req.valid('json')
 
   const updateId = c.req.valid('param').id

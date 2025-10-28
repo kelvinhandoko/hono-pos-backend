@@ -11,7 +11,8 @@ const tags = ['Category']
 export const getCategoryDetailRoute = createRoute({
   path: '/:by/:identifier',
   method: 'get',
-  description: 'Get detailed information about a specific category by ID or name.',
+  description:
+    'Get detailed information about a specific category by ID or name.',
   summary: 'Get Category Detail',
   tags,
   request: {
@@ -20,12 +21,18 @@ export const getCategoryDetailRoute = createRoute({
     }),
   },
   responses: {
-    [HttpStatusCodes.OK]: jsonContent(getDetailCategoryResponseSchema, 'Category details retrieved successfully'),
+    [HttpStatusCodes.OK]: jsonContent(
+      getDetailCategoryResponseSchema,
+      'Category details retrieved successfully',
+    ),
     [HttpStatusCodes.UNAUTHORIZED]: jsonContent(
       createMessageObjectSchema(HttpStatusPhrases.UNAUTHORIZED),
       HttpStatusPhrases.UNAUTHORIZED,
     ),
-    [HttpStatusCodes.NOT_FOUND]: jsonContent(createMessageObjectSchema('Category not found'), 'Category not found'),
+    [HttpStatusCodes.NOT_FOUND]: jsonContent(
+      createMessageObjectSchema('Category not found'),
+      'Category not found',
+    ),
   },
 })
 

@@ -12,4 +12,6 @@ export type UpdateCategoryPayload = z.infer<typeof updateCategoryPayloadSchema>
 
 export const updateCategoryResponseSchema = createCategoryResponseSchema
 
-export type UpdateCategoryResponse = z.infer<typeof updateCategoryResponseSchema>
+export type UpdateCategoryResponse = z.infer<
+  typeof updateCategoryResponseSchema
+>

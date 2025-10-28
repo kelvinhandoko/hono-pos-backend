@@ -8,7 +8,9 @@ export function updateOutletController(deps: {
 }) {
   return async (payload: UpdateOutletPayload) => {
     const { updateOutletOrchestrator, transactionManagerService } = deps
-    return await transactionManagerService.startTransaction(async (tx) => await updateOutletOrchestrator(payload, tx))
+    return await transactionManagerService.startTransaction(
+      async (tx) => await updateOutletOrchestrator(payload, tx),
+    )
   }
 }
 

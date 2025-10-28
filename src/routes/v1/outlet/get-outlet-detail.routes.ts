@@ -20,12 +20,18 @@ export const getOutletDetailRoute = createRoute({
     }),
   },
   responses: {
-    [HttpStatusCodes.OK]: jsonContent(getOutletDetailResponseSchema, 'Outlet details retrieved successfully'),
+    [HttpStatusCodes.OK]: jsonContent(
+      getOutletDetailResponseSchema,
+      'Outlet details retrieved successfully',
+    ),
     [HttpStatusCodes.UNAUTHORIZED]: jsonContent(
       createMessageObjectSchema(HttpStatusPhrases.UNAUTHORIZED),
       HttpStatusPhrases.UNAUTHORIZED,
     ),
-    [HttpStatusCodes.NOT_FOUND]: jsonContent(createMessageObjectSchema('Outlet not found'), 'Outlet not found'),
+    [HttpStatusCodes.NOT_FOUND]: jsonContent(
+      createMessageObjectSchema('Outlet not found'),
+      'Outlet not found',
+    ),
   },
 })
 

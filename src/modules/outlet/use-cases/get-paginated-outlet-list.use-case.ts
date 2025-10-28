@@ -2,7 +2,10 @@ import type { PaginatedOutletListQuery } from '@/entities/schemas/outlet/get-out
 import type { OutletRepository } from '@/modules/outlet/outlet.repository'
 
 export function getPaginatedOutletListUseCase(repo: OutletRepository) {
-  return async (query: PaginatedOutletListQuery) => await repo.getPaginatedList(query)
+  return async (query: PaginatedOutletListQuery) =>
+    await repo.getPaginatedList(query)
 }
 
-export type IGetPaginatedOutletListUseCase = ReturnType<typeof getPaginatedOutletListUseCase>
+export type IGetPaginatedOutletListUseCase = ReturnType<
+  typeof getPaginatedOutletListUseCase
+>

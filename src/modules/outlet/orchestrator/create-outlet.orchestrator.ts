@@ -2,7 +2,9 @@ import type { CreateOutletPayload } from '@/entities/schemas/outlet/create-outle
 import type { DbTransactionClient } from '@/lib/db'
 import type { ICreateOutletUseCase } from '@/modules/outlet/use-cases/create-outlet.use-case'
 
-export function createOutletOrchestrator(deps: { createOutletUseCase: ICreateOutletUseCase }) {
+export function createOutletOrchestrator(deps: {
+  createOutletUseCase: ICreateOutletUseCase
+}) {
   return async (payload: CreateOutletPayload, tx?: DbTransactionClient) => {
     const { createOutletUseCase } = deps
     const outlet = await createOutletUseCase(payload, tx)
@@ -10,4 +12,6 @@ export function createOutletOrchestrator(deps: { createOutletUseCase: ICreateOut
   }
 }
 
-export type ICreateOutletOrchestrator = ReturnType<typeof createOutletOrchestrator>
+export type ICreateOutletOrchestrator = ReturnType<
+  typeof createOutletOrchestrator
+>

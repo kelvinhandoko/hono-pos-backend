@@ -17,8 +17,12 @@ export const CATEGORY_DI_SYMBOLS = {
   // use-cases
   ICreateCategoryUseCase: Symbol.for('ICreateCategoryUseCase'),
   IUpdateCategoryUseCase: Symbol.for('IUpdateCategoryUseCase'),
-  IGetPaginatedCategoryListUseCase: Symbol.for('IGetPaginatedCategoryListUseCase'),
-  IGetInfiniteCategoryListUseCase: Symbol.for('IGetInfiniteCategoryListUseCase'),
+  IGetPaginatedCategoryListUseCase: Symbol.for(
+    'IGetPaginatedCategoryListUseCase',
+  ),
+  IGetInfiniteCategoryListUseCase: Symbol.for(
+    'IGetInfiniteCategoryListUseCase',
+  ),
   IGetCategoryDetailUseCase: Symbol.for('IGetCategoryDetailUseCase'),
 
   // orchestrators

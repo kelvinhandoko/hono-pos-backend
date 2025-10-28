@@ -5,7 +5,9 @@ import { TransactionManagerService } from '@/services/transaction-manager.servic
 export function createServiceModule() {
   const serviceModule = createModule()
 
-  serviceModule.bind(DI_SYMBOLS.ITransactionManagerService).toClass(TransactionManagerService)
+  serviceModule
+    .bind(DI_SYMBOLS.ITransactionManagerService)
+    .toClass(TransactionManagerService)
 
   return serviceModule
 }

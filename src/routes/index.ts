@@ -5,24 +5,26 @@ import { createMessageObjectSchema } from 'stoker/openapi/schemas'
 
 import { createRouter } from '@/lib/create-app'
 
-const router = createRouter()
-  .openapi(
-    createRoute({
-      tags: ['Index'],
-      method: 'get',
-      path: '/',
-      responses: {
-        [HttpStatusCodes.OK]: jsonContent(
-          createMessageObjectSchema('POS API'),
-          'POS API Index',
-        ),
-      },
-    }),
-    (c) => {
-      return c.json({
-        message: 'pos API',
-      }, HttpStatusCodes.OK)
+const router = createRouter().openapi(
+  createRoute({
+    tags: ['Index'],
+    method: 'get',
+    path: '/',
+    responses: {
+      [HttpStatusCodes.OK]: jsonContent(
+        createMessageObjectSchema('POS API'),
+        'POS API Index',
+      ),
     },
-  )
+  }),
+  (c) => {
+    return c.json(
+      {
+        message: 'pos API',
+      },
+      HttpStatusCodes.OK,
+    )
+  },
+)
 
 export default router

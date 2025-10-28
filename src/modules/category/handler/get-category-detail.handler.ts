@@ -4,10 +4,14 @@ import type { GetCategoryDetailRoute } from '@/routes/v1/category/get-category-d
 import { getInjection } from '@/di/container'
 import * as HttpStatusCodes from 'stoker/http-status-codes'
 
-export const getCategoryDetailHandler: AppRouteHandler<GetCategoryDetailRoute> = async (c) => {
+export const getCategoryDetailHandler: AppRouteHandler<
+  GetCategoryDetailRoute
+> = async (c) => {
   const { id } = c.req.valid('param')
 
-  const getCategoryDetailController = getInjection('IGetCategoryDetailController')
+  const getCategoryDetailController = getInjection(
+    'IGetCategoryDetailController',
+  )
   const category = await getCategoryDetailController(id)
 
   if (!category) {

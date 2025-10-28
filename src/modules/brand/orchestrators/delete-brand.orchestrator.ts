@@ -2,7 +2,8 @@ import { IDeleteBrandUseCase } from '@/modules/brand/use-cases/delete-brand.use.
 import { IGetBrandUseCase } from '@/modules/brand/use-cases/get-brand.use-case'
 
 export const deleteBrandOrchestrator =
-  (deps: { deleteBrand: IDeleteBrandUseCase; getBrand: IGetBrandUseCase }) => async (id: string, tenant: string) => {
+  (deps: { deleteBrand: IDeleteBrandUseCase; getBrand: IGetBrandUseCase }) =>
+  async (id: string, tenant: string) => {
     const { deleteBrand, getBrand } = deps
 
     const brandDetail = await getBrand({ id: id, tenantId: tenant })

@@ -8,7 +8,9 @@ export function createOutletController(deps: {
 }) {
   return async (payload: CreateOutletPayload) => {
     const { createOutletOrchestrator, transactionManagerService } = deps
-    return await transactionManagerService.startTransaction(async (tx) => await createOutletOrchestrator(payload, tx))
+    return await transactionManagerService.startTransaction(
+      async (tx) => await createOutletOrchestrator(payload, tx),
+    )
   }
 }
 

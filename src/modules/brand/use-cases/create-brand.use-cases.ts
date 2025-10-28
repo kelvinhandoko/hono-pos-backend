@@ -3,7 +3,8 @@ import { DbTransactionClient } from '@/lib/db'
 import { BrandRepository } from '@/modules/brand/brand.repository'
 
 export const createBrandUseCase =
-  (repo: BrandRepository) => async (payload: CreateBrandPayload, tx?: DbTransactionClient) => {
+  (repo: BrandRepository) =>
+  async (payload: CreateBrandPayload, tx?: DbTransactionClient) => {
     return await repo.create(payload, tx)
   }
 

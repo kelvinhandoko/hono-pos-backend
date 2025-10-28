@@ -7,7 +7,6 @@ export const USER_TENANT_DI_SYMBOLS = {
 
   // use-cases
   ICreateUserTenantUseCase: Symbol.for('ICreateUserTenantUseCase'),
-
 } as const
 
 export interface USER_TENANT_DI_RETURN_TYPES {

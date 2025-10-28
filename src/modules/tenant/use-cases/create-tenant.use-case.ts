@@ -9,5 +9,6 @@ import type { TenantRepository } from '@/modules/tenant/tenant.repository'
 export type ICreateTenantUseCase = ReturnType<typeof createTenantUseCase>
 
 export const createTenantUseCase =
-  (repo: TenantRepository) => async (payload: CreateTenantPayload, tx?: DbTransactionClient) =>
+  (repo: TenantRepository) =>
+  async (payload: CreateTenantPayload, tx?: DbTransactionClient) =>
     await repo.create(payload, tx)

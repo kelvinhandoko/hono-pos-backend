@@ -4,7 +4,10 @@ import { createTenantPayloadSchema } from '@/entities/schemas/tenant/create-tena
 
 export const updateTenantPayloadSchema = createTenantPayloadSchema
   .extend({
-    id: z.string().describe('The unique identifier of the tenant to be updated').min(1),
+    id: z
+      .string()
+      .describe('The unique identifier of the tenant to be updated')
+      .min(1),
   })
   .omit({ userId: true })
 

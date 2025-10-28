@@ -30,8 +30,12 @@ export const TENANT_DI_SYMBOLS = {
   // controller
   ICreateTenantController: Symbol.for('ICreateTenantController'),
   IUpdateTenantController: Symbol.for('IUpdateTenantController'),
-  IGetPaginatedTenantListController: Symbol.for('IGetPaginatedTenantListController'),
-  IGetInfiniteTenantListController: Symbol.for('IGetInfiniteTenantListController'),
+  IGetPaginatedTenantListController: Symbol.for(
+    'IGetPaginatedTenantListController',
+  ),
+  IGetInfiniteTenantListController: Symbol.for(
+    'IGetInfiniteTenantListController',
+  ),
   IGetDetailTenantController: Symbol.for('IGetDetailTenantController'),
 } as const
 

@@ -6,4 +6,6 @@ export const getCategoryDetailNameUseCase =
     return repo.getDetailByName(name, tenantId)
   }
 
-export type IGetCategoryDetailNameUseCase = ReturnType<typeof getCategoryDetailNameUseCase>
+export type IGetCategoryDetailNameUseCase = ReturnType<
+  typeof getCategoryDetailNameUseCase
+>

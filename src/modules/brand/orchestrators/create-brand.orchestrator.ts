@@ -5,7 +5,11 @@ import { IGetBrandUseCase } from '@/modules/brand/use-cases/get-brand.use-case'
 import { IGetDetailTenantUseCase } from '@/modules/tenant/use-cases/get-detail-tenant.use-case'
 
 export const createBrandOrchestrator =
-  (deps: { getTenant: IGetDetailTenantUseCase; getBrand: IGetBrandUseCase; createBrand: ICreateBrandUseCase }) =>
+  (deps: {
+    getTenant: IGetDetailTenantUseCase
+    getBrand: IGetBrandUseCase
+    createBrand: ICreateBrandUseCase
+  }) =>
   async (payload: CreateBrandPayload, tx?: DbTransactionClient) => {
     const { getTenant, getBrand, createBrand } = deps
     const isTenantExists = await getTenant({
@@ -29,4 +33,6 @@ export const createBrandOrchestrator =
     return brand
   }
 
-export type ICreateBrandOrchestrator = ReturnType<typeof createBrandOrchestrator>
+export type ICreateBrandOrchestrator = ReturnType<
+  typeof createBrandOrchestrator
+>

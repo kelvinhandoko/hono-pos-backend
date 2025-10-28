@@ -7,12 +7,20 @@ export function createTenantOrchestrator(deps: {
   createTenantUseCase: ICreateTenantUseCase
   createUserTenantUseCase: ICreateUserTenantUseCase
 }) {
-  return async (payload: CreateTenantPayload & { userId: string }, tx?: DbTransactionClient) => {
+  return async (
+    payload: CreateTenantPayload & { userId: string },
+    tx?: DbTransactionClient,
+  ) => {
     const { createTenantUseCase, createUserTenantUseCase } = deps
     const tenant = await createTenantUseCase(payload, tx)
-    await createUserTenantUseCase({ userId: payload.userId, tenantId: tenant.id }, tx)
+    await createUserTenantUseCase(
+      { userId: payload.userId, tenantId: tenant.id },
+      tx,
+    )
     return tenant
   }
 }
 
-export type ICreateTenantOrchestrator = ReturnType<typeof createTenantOrchestrator>
+export type ICreateTenantOrchestrator = ReturnType<
+  typeof createTenantOrchestrator
+>

@@ -2,7 +2,10 @@ import type { InfiniteOutletListQuery } from '@/entities/schemas/outlet/get-outl
 import type { OutletRepository } from '@/modules/outlet/outlet.repository'
 
 export function getInfiniteOutletListUseCase(repo: OutletRepository) {
-  return async (query: InfiniteOutletListQuery) => await repo.getInfiniteList(query)
+  return async (query: InfiniteOutletListQuery) =>
+    await repo.getInfiniteList(query)
 }
 
-export type IGetInfiniteOutletListUseCase = ReturnType<typeof getInfiniteOutletListUseCase>
+export type IGetInfiniteOutletListUseCase = ReturnType<
+  typeof getInfiniteOutletListUseCase
+>

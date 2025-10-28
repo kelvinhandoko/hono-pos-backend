@@ -16,16 +16,25 @@ export const deleteOutletRoute = createRoute({
   tags,
   request: {
     params: z.object({
-      id: z.string().min(1).describe('The unique identifier of the outlet to delete'),
+      id: z
+        .string()
+        .min(1)
+        .describe('The unique identifier of the outlet to delete'),
     }),
   },
   responses: {
-    [HttpStatusCodes.OK]: jsonContent(deleteOutletResponseSchema, 'The outlet was deleted successfully'),
+    [HttpStatusCodes.OK]: jsonContent(
+      deleteOutletResponseSchema,
+      'The outlet was deleted successfully',
+    ),
     [HttpStatusCodes.UNAUTHORIZED]: jsonContent(
       createMessageObjectSchema(HttpStatusPhrases.UNAUTHORIZED),
       HttpStatusPhrases.UNAUTHORIZED,
     ),
-    [HttpStatusCodes.NOT_FOUND]: jsonContent(createMessageObjectSchema('Outlet not found'), 'Outlet not found'),
+    [HttpStatusCodes.NOT_FOUND]: jsonContent(
+      createMessageObjectSchema('Outlet not found'),
+      'Outlet not found',
+    ),
   },
 })
 

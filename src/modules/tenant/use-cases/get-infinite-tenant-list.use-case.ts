@@ -2,7 +2,10 @@ import type { InfiniteTenantListQuery } from '@/entities/schemas/tenant/get-tena
 import type { TenantRepository } from '@/modules/tenant/tenant.repository'
 
 export function getInfiniteTenantListUseCase(repo: TenantRepository) {
-  return async (query: InfiniteTenantListQuery) => await repo.getInfiniteList(query)
+  return async (query: InfiniteTenantListQuery) =>
+    await repo.getInfiniteList(query)
 }
 
-export type IGetInfiniteTenantListUseCase = ReturnType<typeof getInfiniteTenantListUseCase>
+export type IGetInfiniteTenantListUseCase = ReturnType<
+  typeof getInfiniteTenantListUseCase
+>

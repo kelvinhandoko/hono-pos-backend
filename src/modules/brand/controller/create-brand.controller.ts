@@ -9,7 +9,9 @@ export function createBrandController(deps: {
   return async (payload: CreateBrandPayload) => {
     const { createBrandOrchestrator, transactionManagerService } = deps
 
-    return await transactionManagerService.startTransaction(async (tx) => await createBrandOrchestrator(payload, tx))
+    return await transactionManagerService.startTransaction(
+      async (tx) => await createBrandOrchestrator(payload, tx),
+    )
   }
 }
 

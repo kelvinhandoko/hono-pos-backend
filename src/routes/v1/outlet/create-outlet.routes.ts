@@ -2,8 +2,14 @@ import { createRoute } from '@hono/zod-openapi'
 import * as HttpStatusCodes from 'stoker/http-status-codes'
 import * as HttpStatusPhrases from 'stoker/http-status-phrases'
 import { jsonContent, jsonContentRequired } from 'stoker/openapi/helpers'
-import { createErrorSchema, createMessageObjectSchema } from 'stoker/openapi/schemas'
-import { createOutletPayloadSchema, createOutletResponseSchema } from '@/entities/schemas/outlet/create-outlet.entities'
+import {
+  createErrorSchema,
+  createMessageObjectSchema,
+} from 'stoker/openapi/schemas'
+import {
+  createOutletPayloadSchema,
+  createOutletResponseSchema,
+} from '@/entities/schemas/outlet/create-outlet.entities'
 
 const tags = ['Outlet']
 
@@ -14,10 +20,16 @@ export const createOutletRoute = createRoute({
   summary: 'Create Outlet',
   tags,
   request: {
-    body: jsonContentRequired(createOutletPayloadSchema.omit({ tenantId: true }), 'The outlet creation payload'),
+    body: jsonContentRequired(
+      createOutletPayloadSchema.omit({ tenantId: true }),
+      'The outlet creation payload',
+    ),
   },
   responses: {
-    [HttpStatusCodes.CREATED]: jsonContent(createOutletResponseSchema, 'The outlet was created successfully'),
+    [HttpStatusCodes.CREATED]: jsonContent(
+      createOutletResponseSchema,
+      'The outlet was created successfully',
+    ),
     [HttpStatusCodes.UNPROCESSABLE_ENTITY]: jsonContent(
       createErrorSchema(createOutletPayloadSchema),
       'The validation error(s)',

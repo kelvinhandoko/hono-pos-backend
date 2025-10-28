@@ -4,11 +4,15 @@ import type { GetDetailTenantRoute } from '@/routes/v1/tenant/get-detail-tenant.
 import { getInjection } from '@/di/container'
 import { getDetailTenantResponseSchema } from '@/entities/schemas/tenant/get-detail-tenant.entities'
 
-export const getDetailTenantHandler: AppRouteHandler<GetDetailTenantRoute> = async (c) => {
+export const getDetailTenantHandler: AppRouteHandler<
+  GetDetailTenantRoute
+> = async (c) => {
   const { id } = c.req.valid('param')
 
   const getDetailTenantController = getInjection('IGetDetailTenantController')
-  const output = getDetailTenantResponseSchema.safeParse(await getDetailTenantController({ id })).data
+  const output = getDetailTenantResponseSchema.safeParse(
+    await getDetailTenantController({ id }),
+  ).data
 
   return c.json(output, 200)
 }

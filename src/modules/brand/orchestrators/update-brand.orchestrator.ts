@@ -5,7 +5,11 @@ import { IUpdateBrandUseCase } from '@/modules/brand/use-cases/update-brand.use-
 import { IGetDetailTenantUseCase } from '@/modules/tenant/use-cases/get-detail-tenant.use-case'
 
 export const updateBrandOrchestrator =
-  (deps: { getTenant: IGetDetailTenantUseCase; updateBrandUseCase: IUpdateBrandUseCase; getBrand: IGetBrandUseCase }) =>
+  (deps: {
+    getTenant: IGetDetailTenantUseCase
+    updateBrandUseCase: IUpdateBrandUseCase
+    getBrand: IGetBrandUseCase
+  }) =>
   async (payload: UpdateBrandPayload, tx?: DbTransactionClient) => {
     const { getTenant, getBrand, updateBrandUseCase } = deps
 

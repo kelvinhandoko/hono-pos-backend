@@ -2,7 +2,10 @@ import { createRoute } from '@hono/zod-openapi'
 import * as HttpStatusCodes from 'stoker/http-status-codes'
 import * as HttpStatusPhrases from 'stoker/http-status-phrases'
 import { jsonContent } from 'stoker/openapi/helpers'
-import { createErrorSchema, createMessageObjectSchema } from 'stoker/openapi/schemas'
+import {
+  createErrorSchema,
+  createMessageObjectSchema,
+} from 'stoker/openapi/schemas'
 import {
   infiniteTenantListQuerySchema,
   infiniteTenantListResponseSchema,
@@ -13,7 +16,8 @@ const tags = ['Tenant']
 export const getInfiniteTenantListRoute = createRoute({
   path: '/infinite',
   method: 'get',
-  description: 'Get an infinite scroll list of tenants for the authenticated user.',
+  description:
+    'Get an infinite scroll list of tenants for the authenticated user.',
   summary: 'Get Infinite Tenant List',
   tags,
   request: {

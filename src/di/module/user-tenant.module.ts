@@ -14,7 +14,9 @@ export function createUserTenantModule() {
   // use-cases
   userTenantModule
     .bind(DI_SYMBOLS.ICreateUserTenantUseCase)
-    .toHigherOrderFunction(createUserTenantUseCase, [DI_SYMBOLS.IUserTenantRepository])
+    .toHigherOrderFunction(createUserTenantUseCase, [
+      DI_SYMBOLS.IUserTenantRepository,
+    ])
 
   return userTenantModule
 }

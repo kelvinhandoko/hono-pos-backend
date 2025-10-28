@@ -22,7 +22,10 @@ export const updateCategoryOrchestrator =
       throw new NotFoundError('Tenant not found')
     }
 
-    const categoryDetail = await getCategoryDetail({ name: payload.name, tenantId: payload.tenantId })
+    const categoryDetail = await getCategoryDetail({
+      name: payload.name,
+      tenantId: payload.tenantId,
+    })
 
     if (categoryDetail && categoryDetail.id !== payload.id) {
       throw new ConflictError('Category name already exists')
@@ -37,4 +40,6 @@ export const updateCategoryOrchestrator =
     return category
   }
 
-export type IUpdateCategoryOrchestrator = ReturnType<typeof updateCategoryOrchestrator>
+export type IUpdateCategoryOrchestrator = ReturnType<
+  typeof updateCategoryOrchestrator
+>

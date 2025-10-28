@@ -8,7 +8,9 @@ export function deleteOutletController(deps: {
 }) {
   return async (payload: DeleteOutletPayload) => {
     const { deleteOutletOrchestrator, transactionManagerService } = deps
-    return await transactionManagerService.startTransaction(async (tx) => await deleteOutletOrchestrator(payload, tx))
+    return await transactionManagerService.startTransaction(
+      async (tx) => await deleteOutletOrchestrator(payload, tx),
+    )
   }
 }
 

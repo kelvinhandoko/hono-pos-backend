@@ -13,4 +13,6 @@ export const createCategoryResponseSchema = baseResponseSchema.extend({
   name: z.string(),
 })
 
-export type CreateCategoryResponse = z.infer<typeof createCategoryResponseSchema>
+export type CreateCategoryResponse = z.infer<
+  typeof createCategoryResponseSchema
+>

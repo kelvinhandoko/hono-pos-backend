@@ -28,14 +28,13 @@ function createPrismaClient() {
     .$extends(
       createSoftDeleteExtension({
         models: Object.fromEntries(
-          Object.keys(Prisma.ModelName).map(model => [model, true]),
+          Object.keys(Prisma.ModelName).map((model) => [model, true]),
         ),
         defaultConfig: {
           allowCompoundUniqueIndexWhere: true,
           field: 'deletedAt',
           createValue: (deleted) => {
-            if (deleted)
-              return new Date()
+            if (deleted) return new Date()
             return null
           },
         },
@@ -52,5 +51,4 @@ export type DbTransactionClient = Parameters<
   Parameters<(typeof db)['$transaction']>[0]
 >[0]
 
-if (env.NODE_ENV !== 'production')
-  globalForPrisma.prisma = db
+if (env.NODE_ENV !== 'production') globalForPrisma.prisma = db

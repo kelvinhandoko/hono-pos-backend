@@ -47,7 +47,9 @@ export class CategoryRepository extends BaseRepository {
       this._fail(error)
     }
   }
-  async getPaginatedList(query: PaginatedCategoryQuery): Promise<PaginatedCategoryListResponse> {
+  async getPaginatedList(
+    query: PaginatedCategoryQuery,
+  ): Promise<PaginatedCategoryListResponse> {
     try {
       const data = await db.category.findMany({
         where: {
@@ -79,7 +81,9 @@ export class CategoryRepository extends BaseRepository {
       this._fail(error)
     }
   }
-  async getInfiniteList(query: InfiniteCategoryQuery): Promise<InfiniteCategoryListResponse> {
+  async getInfiniteList(
+    query: InfiniteCategoryQuery,
+  ): Promise<InfiniteCategoryListResponse> {
     try {
       const data = await db.category.findMany({
         where: {
@@ -115,7 +119,12 @@ export class CategoryRepository extends BaseRepository {
     try {
       const category = await db.category.findUnique({
         where: { id },
-        select: { id: true, name: true, createdBy: { select: { name: true } }, updatedBy: { select: { name: true } } },
+        select: {
+          id: true,
+          name: true,
+          createdBy: { select: { name: true } },
+          updatedBy: { select: { name: true } },
+        },
       })
       if (!category) return null
 

@@ -17,17 +17,28 @@ export function configureOpenApi(app: AppOpenAPI) {
       },
       {
         name: 'Tenant',
-        description: 'Tenant management endpoints for creating and managing multi-tenant organizations',
+        description:
+          'Tenant management endpoints for creating and managing multi-tenant organizations',
       },
       {
         name: 'Outlet',
-        description: 'Outlet management endpoints for creating and managing physical store locations under a tenant',
+        description:
+          'Outlet management endpoints for creating and managing physical store locations under a tenant',
       },
     ],
   })
 
-  app.get('/reference', Scalar({ sources: [{ url: '/docs', title: 'API Docs' }, {
-    url: '/api/auth/open-api/generate-schema',
-    title: 'Auth Docs',
-  }], theme: 'bluePlanet' }))
+  app.get(
+    '/reference',
+    Scalar({
+      sources: [
+        { url: '/docs', title: 'API Docs' },
+        {
+          url: '/api/auth/open-api/generate-schema',
+          title: 'Auth Docs',
+        },
+      ],
+      theme: 'bluePlanet',
+    }),
+  )
 }

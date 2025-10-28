@@ -3,13 +3,17 @@ import type { AppRouteHandler } from '@/lib/type'
 import type { GetPaginatedTenantListRoute } from '@/routes/v1/tenant/get-paginated-tenant-list.routes'
 import { getInjection } from '@/di/container'
 
-export const getPaginatedTenantListHandler: AppRouteHandler<GetPaginatedTenantListRoute> = async (c) => {
+export const getPaginatedTenantListHandler: AppRouteHandler<
+  GetPaginatedTenantListRoute
+> = async (c) => {
   const query = c.req.valid('query')
   const userId = c.var.user!.id
 
   console.log({ userId })
 
-  const getPaginatedTenantListController = getInjection('IGetPaginatedTenantListController')
+  const getPaginatedTenantListController = getInjection(
+    'IGetPaginatedTenantListController',
+  )
   const result = await getPaginatedTenantListController({ ...query, userId })
 
   return c.json(

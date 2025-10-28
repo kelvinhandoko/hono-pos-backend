@@ -16,11 +16,17 @@ export const getDetailTenantRoute = createRoute({
   tags,
   request: {
     params: z.object({
-      id: z.string().min(1).describe('The unique identifier of the outlet to delete'),
+      id: z
+        .string()
+        .min(1)
+        .describe('The unique identifier of the outlet to delete'),
     }),
   },
   responses: {
-    [HttpStatusCodes.OK]: jsonContent(getDetailTenantResponseSchema, 'Tenant details retrieved successfully'),
+    [HttpStatusCodes.OK]: jsonContent(
+      getDetailTenantResponseSchema,
+      'Tenant details retrieved successfully',
+    ),
     [HttpStatusCodes.UNAUTHORIZED]: jsonContent(
       createMessageObjectSchema(HttpStatusPhrases.UNAUTHORIZED),
       HttpStatusPhrases.UNAUTHORIZED,

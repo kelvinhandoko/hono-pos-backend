@@ -37,8 +37,12 @@ export const OUTLET_DI_SYMBOLS = {
   IUpdateOutletController: Symbol.for('IUpdateOutletController'),
   IDeleteOutletController: Symbol.for('IDeleteOutletController'),
   IGetOutletDetailController: Symbol.for('IGetOutletDetailController'),
-  IGetPaginatedOutletListController: Symbol.for('IGetPaginatedOutletListController'),
-  IGetInfiniteOutletListController: Symbol.for('IGetInfiniteOutletListController'),
+  IGetPaginatedOutletListController: Symbol.for(
+    'IGetPaginatedOutletListController',
+  ),
+  IGetInfiniteOutletListController: Symbol.for(
+    'IGetInfiniteOutletListController',
+  ),
 } as const
 
 export interface OUTLET_DI_RETURN_TYPES {

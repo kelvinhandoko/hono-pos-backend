@@ -12,4 +12,6 @@ export const getDetailTenantResponseSchema = baseResponseSchema.extend({
   name: z.string().describe('The name of the tenant'),
 })
 
-export type GetDetailTenantResponse = z.infer<typeof getDetailTenantResponseSchema>
+export type GetDetailTenantResponse = z.infer<
+  typeof getDetailTenantResponseSchema
+>

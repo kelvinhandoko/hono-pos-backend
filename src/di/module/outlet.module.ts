@@ -38,48 +38,68 @@ export function createOutletModule() {
 
   outletModule
     .bind(DI_SYMBOLS.IGetOutletDetailUseCase)
-    .toHigherOrderFunction(getOutletDetailUseCase, [DI_SYMBOLS.IOutletRepository])
+    .toHigherOrderFunction(getOutletDetailUseCase, [
+      DI_SYMBOLS.IOutletRepository,
+    ])
 
   outletModule
     .bind(DI_SYMBOLS.IGetPaginatedOutletListUseCase)
-    .toHigherOrderFunction(getPaginatedOutletListUseCase, [DI_SYMBOLS.IOutletRepository])
+    .toHigherOrderFunction(getPaginatedOutletListUseCase, [
+      DI_SYMBOLS.IOutletRepository,
+    ])
 
   outletModule
     .bind(DI_SYMBOLS.IGetInfiniteOutletListUseCase)
-    .toHigherOrderFunction(getInfiniteOutletListUseCase, [DI_SYMBOLS.IOutletRepository])
+    .toHigherOrderFunction(getInfiniteOutletListUseCase, [
+      DI_SYMBOLS.IOutletRepository,
+    ])
 
   // orchestrators
-  outletModule.bind(DI_SYMBOLS.ICreateOutletOrchestrator).toHigherOrderFunction(createOutletOrchestrator, {
-    createOutletUseCase: DI_SYMBOLS.ICreateOutletUseCase,
-  })
+  outletModule
+    .bind(DI_SYMBOLS.ICreateOutletOrchestrator)
+    .toHigherOrderFunction(createOutletOrchestrator, {
+      createOutletUseCase: DI_SYMBOLS.ICreateOutletUseCase,
+    })
 
-  outletModule.bind(DI_SYMBOLS.IUpdateOutletOrchestrator).toHigherOrderFunction(updateOutletOrchestrator, {
-    updateOutletUseCase: DI_SYMBOLS.IUpdateOutletUseCase,
-  })
+  outletModule
+    .bind(DI_SYMBOLS.IUpdateOutletOrchestrator)
+    .toHigherOrderFunction(updateOutletOrchestrator, {
+      updateOutletUseCase: DI_SYMBOLS.IUpdateOutletUseCase,
+    })
 
-  outletModule.bind(DI_SYMBOLS.IDeleteOutletOrchestrator).toHigherOrderFunction(deleteOutletOrchestrator, {
-    deleteOutletUseCase: DI_SYMBOLS.IDeleteOutletUseCase,
-  })
+  outletModule
+    .bind(DI_SYMBOLS.IDeleteOutletOrchestrator)
+    .toHigherOrderFunction(deleteOutletOrchestrator, {
+      deleteOutletUseCase: DI_SYMBOLS.IDeleteOutletUseCase,
+    })
 
   // controllers
-  outletModule.bind(DI_SYMBOLS.ICreateOutletController).toHigherOrderFunction(createOutletController, {
-    createOutletOrchestrator: DI_SYMBOLS.ICreateOutletOrchestrator,
-    transactionManagerService: DI_SYMBOLS.ITransactionManagerService,
-  })
+  outletModule
+    .bind(DI_SYMBOLS.ICreateOutletController)
+    .toHigherOrderFunction(createOutletController, {
+      createOutletOrchestrator: DI_SYMBOLS.ICreateOutletOrchestrator,
+      transactionManagerService: DI_SYMBOLS.ITransactionManagerService,
+    })
 
-  outletModule.bind(DI_SYMBOLS.IUpdateOutletController).toHigherOrderFunction(updateOutletController, {
-    updateOutletOrchestrator: DI_SYMBOLS.IUpdateOutletOrchestrator,
-    transactionManagerService: DI_SYMBOLS.ITransactionManagerService,
-  })
+  outletModule
+    .bind(DI_SYMBOLS.IUpdateOutletController)
+    .toHigherOrderFunction(updateOutletController, {
+      updateOutletOrchestrator: DI_SYMBOLS.IUpdateOutletOrchestrator,
+      transactionManagerService: DI_SYMBOLS.ITransactionManagerService,
+    })
 
-  outletModule.bind(DI_SYMBOLS.IDeleteOutletController).toHigherOrderFunction(deleteOutletController, {
-    deleteOutletOrchestrator: DI_SYMBOLS.IDeleteOutletOrchestrator,
-    transactionManagerService: DI_SYMBOLS.ITransactionManagerService,
-  })
+  outletModule
+    .bind(DI_SYMBOLS.IDeleteOutletController)
+    .toHigherOrderFunction(deleteOutletController, {
+      deleteOutletOrchestrator: DI_SYMBOLS.IDeleteOutletOrchestrator,
+      transactionManagerService: DI_SYMBOLS.ITransactionManagerService,
+    })
 
-  outletModule.bind(DI_SYMBOLS.IGetOutletDetailController).toHigherOrderFunction(getOutletDetailController, {
-    getOutletDetailUseCase: DI_SYMBOLS.IGetOutletDetailUseCase,
-  })
+  outletModule
+    .bind(DI_SYMBOLS.IGetOutletDetailController)
+    .toHigherOrderFunction(getOutletDetailController, {
+      getOutletDetailUseCase: DI_SYMBOLS.IGetOutletDetailUseCase,
+    })
 
   outletModule
     .bind(DI_SYMBOLS.IGetPaginatedOutletListController)

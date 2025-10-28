@@ -9,4 +9,6 @@ export function getOutletDetailController(deps: {
   }
 }
 
-export type IGetOutletDetailController = ReturnType<typeof getOutletDetailController>
+export type IGetOutletDetailController = ReturnType<
+  typeof getOutletDetailController
+>

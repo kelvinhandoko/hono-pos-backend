@@ -5,7 +5,9 @@ import { z } from 'zod'
 export const env = createEnv({
   server: {
     LOG_LEVEL: z.enum(['debug', 'info', 'warn', 'error']).default('info'),
-    NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
+    NODE_ENV: z
+      .enum(['development', 'production', 'test'])
+      .default('development'),
     BETTER_AUTH_SECRET: z.string(),
     BETTER_AUTH_URL: z.url().default('http://localhost:3000'),
     CLIENT_URL: z.url().default('http://localhost:3001'),

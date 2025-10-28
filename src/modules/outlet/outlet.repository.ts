@@ -123,7 +123,10 @@ export class OutletRepository extends BaseRepository {
 
   async getInfiniteList(q: InfiniteOutletListQuery) {
     try {
-      const [data, meta] = await this._getList(q).withCursor({ limit: q.limit, after: q.cursor })
+      const [data, meta] = await this._getList(q).withCursor({
+        limit: q.limit,
+        after: q.cursor,
+      })
       return { data, meta }
     } catch (error) {
       this._fail(error)

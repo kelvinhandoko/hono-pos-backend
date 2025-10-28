@@ -6,6 +6,8 @@ export const createUserTenantPayloadSchema = z.object({
   tenantId: z.string().min(1),
 })
 
-export type CreateUserTenantPayload = z.infer<typeof createUserTenantPayloadSchema>
+export type CreateUserTenantPayload = z.infer<
+  typeof createUserTenantPayloadSchema
+>
 
 export const createUserTenantResponseSchema = baseResponseSchema

@@ -10,4 +10,6 @@ export function getPaginatedOutletListController(deps: {
   }
 }
 
-export type IGetPaginatedOutletListController = ReturnType<typeof getPaginatedOutletListController>
+export type IGetPaginatedOutletListController = ReturnType<
+  typeof getPaginatedOutletListController
+>

@@ -10,4 +10,6 @@ export function getPaginatedTenantListController(deps: {
   }
 }
 
-export type IGetPaginatedTenantListController = ReturnType<typeof getPaginatedTenantListController>
+export type IGetPaginatedTenantListController = ReturnType<
+  typeof getPaginatedTenantListController
+>
