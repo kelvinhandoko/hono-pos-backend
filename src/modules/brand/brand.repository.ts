@@ -4,8 +4,9 @@ import {
   getBrandQuery,
   InfiniteBrandQuery,
   PaginatedBrandQuery,
-} from '@/entities/schemas/brand/get-category.entities'
+} from '@/entities/schemas/brand/get-brand.entities'
 import { UpdateBrandPayload } from '@/entities/schemas/brand/update-brand.entities'
+import { GetDetailCategoryQuery } from '@/entities/schemas/category/get-detail-category.entities'
 import { db, DbTransactionClient } from '@/lib/db'
 import { Prisma } from '@prisma/client'
 
@@ -27,6 +28,7 @@ export class BrandRepository extends BaseRepository {
       this._fail(error)
     }
   }
+
   async update(payload: UpdateBrandPayload, tx?: DbTransactionClient) {
     try {
       const invoker = tx ?? db
@@ -61,93 +63,58 @@ export class BrandRepository extends BaseRepository {
       this._fail(error)
     }
   }
-  async get(payload: getBrandQuery) {
+
+  async getDetail(q: GetDetailCategoryQuery) {
     try {
-      const whereClause: Prisma.BrandWhereInput = {
-        tenantId: payload.tenantId,
-      }
-
-      if (payload.id) {
-        whereClause.id = payload.id
-      }
-      if (payload.name) {
-        whereClause.name = {
-          contains: payload.name,
-          mode: 'insensitive',
-        }
-      }
-
-      if (payload.createdById) {
-        whereClause.createdById = payload.createdById
-      }
-
-      if (payload.updatedById) {
-        whereClause.updatedById = payload.updatedById
-      }
-      if (payload.search) {
-        whereClause.OR = [
-          {
-            name: {
-              contains: payload.search,
-              mode: 'insensitive',
-            },
-          },
-        ]
-      }
-
-      const brands = await db.brand.findFirst({
-        where: whereClause,
+      const data = await db.brand.findFirst({
+        where: { [q.by]: q.identifier },
       })
-
-      return brands
+      return data
     } catch (error) {
       this._fail(error)
     }
   }
-  async getPaginated(query: PaginatedBrandQuery) {
-    try {
-      const brand = await db.brand.findMany({
-        where: {
-          tenantId: query.tenantId,
-        },
-        skip: query.page,
-        take: query.limit,
-      })
 
-      const total = await db.category.count({
-        where: {
-          tenantId: query.tenantId,
-        },
-      })
-
-      return {
-        data: brand,
-        total: total,
+  private _getQuery(query: getBrandQuery) {
+    const whereClause: Prisma.BrandWhereInput = {
+      tenantId: query.tenantId,
+    }
+    if (query.search) {
+      whereClause.name = {
+        contains: query.search,
+        mode: 'insensitive',
       }
+    }
+    if (query.createdById) {
+      whereClause.createdById = query.createdById
+    }
+
+    if (query.updatedById) {
+      whereClause.updatedById = query.updatedById
+    }
+
+    return db.brand.paginate({ where: whereClause })
+  }
+
+  async getPaginatedList(query: PaginatedBrandQuery) {
+    try {
+      const [data, meta] = await this._getQuery(query).withPages({
+        page: query.page,
+        limit: query.limit,
+      })
+      return { data, meta }
     } catch (error) {
       this._fail(error)
     }
   }
-  async getInfinite(query: InfiniteBrandQuery) {
+
+  async getInfiniteList(query: InfiniteBrandQuery) {
     try {
-      const brand = await db.brand.findMany({
-        where: {
-          tenantId: query.tenantId,
-        },
-        skip: query.page,
-        take: query.limit,
+      const [data, meta] = await this._getQuery(query).withCursor({
+        after: query.cursor,
+        limit: query.limit,
       })
-
-      const total = await db.category.count({
-        where: {
-          tenantId: query.tenantId,
-        },
-      })
-
-      return {
-        data: brand,
-        total: total,
-      }
+      return { data, meta }
     } catch (error) {
       this._fail(error)
     }

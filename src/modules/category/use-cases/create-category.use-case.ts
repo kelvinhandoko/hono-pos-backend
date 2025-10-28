@@ -6,9 +6,7 @@ export const CreateCategoryUseCase =
   (repo: CategoryRepository) =>
   async (payload: CreateCategoryPayload, tx?: DbTransactionClient) => {
     const data = await repo.create(payload, tx)
-    if (!data) {
-      throw new Error('Failed to create category')
-    }
+
     return data
   }
 

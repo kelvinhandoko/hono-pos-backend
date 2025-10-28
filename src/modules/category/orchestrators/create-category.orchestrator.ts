@@ -1,3 +1,4 @@
+import { ConflictError, NotFoundError } from '@/entities/error/common'
 import { CreateCategoryPayload } from '@/entities/schemas/category/create-category.entities'
 import { DbTransactionClient } from '@/lib/db'
 import { ICreateCategoryUseCase } from '@/modules/category/use-cases/create-category.use-case'
@@ -16,20 +17,20 @@ export const createCategoryOrchestrator =
       id: payload.tenantId,
     })
     if (!isTenantExists) {
-      throw new Error('Tenant does not exist')
+      throw new NotFoundError('Tenant does not exist')
     }
 
     const categoryDetail = await getCategoryDetail({
       name: payload.name,
-      tenandId: payload.tenantId,
+      tenantId: payload.tenantId,
     })
+
     if (!categoryDetail) {
-      throw new Error('Category name already in use')
+      throw new ConflictError('Category name already in use')
     }
+
     const category = await createCategoryUseCase(payload, tx)
-    if (!category) {
-      throw new Error('Failed to create category')
-    }
+
     return category
   }
 

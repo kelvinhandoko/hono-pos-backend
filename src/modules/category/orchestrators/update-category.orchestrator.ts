@@ -33,10 +33,6 @@ export const updateCategoryOrchestrator =
 
     const category = await updateCategoryUseCase(payload, tx)
 
-    if (!category) {
-      throw new Error('Failed to update category')
-    }
-
     return category
   }
 

@@ -1,12 +1,14 @@
+import { NotFoundError } from '@/entities/error/common'
 import { CategoryRepository } from '@/modules/category/category.repository'
 
-// export const getCategoryDetail
 export const GetCategoryDetailUseCase =
   (repo: CategoryRepository) => async (id: string) => {
     const data = await repo.getDetailCategory(id)
+
     if (!data) {
-      throw new Error('Failed to get category detail')
+      throw new NotFoundError('Category not found')
     }
+
     return data
   }
 

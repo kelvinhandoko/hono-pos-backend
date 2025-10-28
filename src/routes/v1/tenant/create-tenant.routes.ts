@@ -21,7 +21,7 @@ export const createTenantRoute = createRoute({
   tags,
   request: {
     body: jsonContentRequired(
-      createTenantPayloadSchema,
+      createTenantPayloadSchema.omit({ userId: true }),
       'The tenant creation payload',
     ),
   },

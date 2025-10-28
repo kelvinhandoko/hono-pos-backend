@@ -2,7 +2,8 @@ import { DI_SYMBOLS } from '@/di/types'
 import { BrandRepository } from '@/modules/brand/brand.repository'
 import { createBrandUseCase } from '@/modules/brand/use-cases/create-brand.use-cases'
 import { deleteBrandUseCase } from '@/modules/brand/use-cases/delete-brand.use.case'
-import { getBrandUseCase } from '@/modules/brand/use-cases/get-brand.use-case'
+import { getDetailBrandUseCase } from '@/modules/brand/use-cases/get-detail-brand.use-case'
+
 import { getInfiniteBrandUseCase } from '@/modules/brand/use-cases/get-infinite-brand.use-case'
 import { getPaginatedBrandUseCase } from '@/modules/brand/use-cases/get-paginated-brand.use-case'
 import { updateBrandUseCase } from '@/modules/brand/use-cases/update-brand.use-case'
@@ -37,7 +38,7 @@ export function createBrandModule() {
 
   brandModule
     .bind(DI_SYMBOLS.IGetBrandDetailUseCase)
-    .toHigherOrderFunction(getBrandUseCase, [DI_SYMBOLS.IBrandRepository])
+    .toHigherOrderFunction(getDetailBrandUseCase, [DI_SYMBOLS.IBrandRepository])
 
   brandModule
     .bind(DI_SYMBOLS.IDeleteBrandUseCase)

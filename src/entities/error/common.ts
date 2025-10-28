@@ -18,3 +18,10 @@ export class BadRequestError extends Error {
     this.name = 'BadRequestError'
   }
 }
+
+export class DatabaseOperationError extends Error {
+  constructor(message = 'Database Error') {
+    super(message)
+    this.name = 'DatabaseOperationError'
+  }
+}
